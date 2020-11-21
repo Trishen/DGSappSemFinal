@@ -1,0 +1,41 @@
+﻿@model DGSappSem2Final.Models.Staff.StaffPositions
+
+@{
+    ViewBag.Title = "Staff Position Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffPositionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffPositionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LimitedPosition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LimitedPosition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Limit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Limit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StaffPositionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

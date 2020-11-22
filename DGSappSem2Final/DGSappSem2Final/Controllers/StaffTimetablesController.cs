@@ -18,6 +18,26 @@ namespace DGSappSem2Final.Controllers
         // GET: StaffTimetables
         public ActionResult Index()
         {
+            var staffTimetableList = db.StaffTimetables.ToList();
+
+            var staff = db.Staffs.ToList();
+            foreach (var s in staff)
+            {
+                var displayName = $"{s.Title}. {s.Name} {s.Surname}";
+                var entryExists = db.StaffTimetables.Any(x => x.AssignedTeacher == displayName);
+
+                if (!entryExists)
+                {
+                    db.StaffTimetables.Add(new StaffTimetable
+                    {
+                        AssignedTeacher = displayName
+                    }); ;
+
+                    db.SaveChanges();
+                }
+            }
+
+
             return View(db.StaffTimetables.ToList());
         }
 
@@ -39,7 +59,7 @@ namespace DGSappSem2Final.Controllers
         // GET: StaffTimetables/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new StaffTimetable());
         }
 
         // POST: StaffTimetables/Create
@@ -62,11 +82,35 @@ namespace DGSappSem2Final.Controllers
         // GET: StaffTimetables/Edit/5
         public ActionResult Edit(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             StaffTimetable staffTimetable = db.StaffTimetables.Find(id);
+
+            var reg = db.Classes.ToList();
+            var assignedReg = reg.Where(x => x.AssignedTeacher == staffTimetable.AssignedTeacher).ToList();
+
+            var staffSubs = db.StaffSubjects.ToList();
+            var assignedSubs = staffSubs.Where(x=> x.AssignedTeacher == staffTimetable.AssignedTeacher).ToList();
+
+            if (assignedSubs.Count > 0 || assignedReg.Count == 1)
+            {
+                staffTimetable.HasAssignedClasses = true;
+            }
+            else
+            {
+                staffTimetable.HasAssignedClasses = false;
+            }
+
+            if (assignedReg.Count == 1)
+            {
+                staffTimetable.Registration = assignedReg.FirstOrDefault().ClassName;
+            }
+
+
+
             if (staffTimetable == null)
             {
                 return HttpNotFound();

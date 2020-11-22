@@ -1,0 +1,170 @@
+﻿@model DGSappSem2Final.Models.Student.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Class.ClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class.ClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentTown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTown)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentBirthCertURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentBirthCertURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentSurName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentSurName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentAllowReg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentAllowReg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignedTeacher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignedTeacher)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

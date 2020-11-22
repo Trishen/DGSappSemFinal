@@ -11,18 +11,240 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>StaffTimetable</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.StaffTimetableId)
+<div class="form-horizontal">
+    <h4>StaffTimetable</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model=> model.StaffTimetableId)
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    @if (Model.HasAssignedClasses)
+    {
+    <table border="5" cellspacing="0" align="center">
+        <!--<caption>Timetable</caption>-->
+
+
+        <tr>
+
+            <td
+                align="center" height="50"
+                width="100"  style="background-color: #9bb3fa;"
+                style="background-color: #9bb3fa;"
+               >
+                <br>
+                <b>Day/Period</b>
+            </td>
+            <td align="center" height="50"
+                width="100"  style="background-color: #9bb3fa;"
+            
+>
+                <b>Registration<br>7:45-8:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100"  style="background-color: #9bb3fa;">
+                <b>I<br>8:00-9:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100"  style="background-color: #9bb3fa;">
+                <b>II<br>9:00-10:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100"  style="background-color: #9bb3fa;">
+                <b>III<br>10:00-11:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100"  style="background-color: #9bb3fa;">
+                <b>11:00-12:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100"  style="background-color: #9bb3fa;">
+                <b>IV<br>12:00-1:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100"  style="background-color: #9bb3fa;">
+                <b>V<br>1:00-2:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100"  style="background-color: #9bb3fa;">
+                <b>VI<br>2:00-3:00</b>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td align="center" height="50"style="background-color: #9bb3fa;">
+                <b>Monday</b>
+            </td>
+            <td align="center" height="50">
+                @*@Html.LabelForModel(Model.Registration)*@
+                @Html.LabelForModel(Model.Registration)
+            </td>
+            <td align="center" height="50">
+                @*@Html.LabelForModel(Model.Monday.ClassSession1 )*@
+                @Html.LabelForModel(Model.Monday.ClassSession1)
+
+            </td>
+            <td align="center" height="50">
+                @*@Html.LabelForModel(Model.Monday.ClassSession2)*@
+                @Html.LabelForModel(Model.Monday.ClassSession2)
+
+            </td>
+            <td align="center" height="50">
+                @*@Html.LabelForModel(Model.Monday.ClassSession3)*@
+                @Html.LabelForModel(Model.Monday.ClassSession3)
+
+            </td>
+            <td align="center" height="50"style="background-color: lightgrey;">
+                <b>L<b>
+            </td>
+            <td align="center" height="50">
+                @*@Html.LabelForModel(Model.Monday.ClassSession4)*@
+                @Html.LabelForModel(Model.Monday.ClassSession4)
+
+            </td>
+            <td align="center" height="50">
+                @*@Html.LabelForModel(Model.Monday.ClassSession5)*@
+                @Html.LabelForModel(Model.Monday.ClassSession5)
+
+            </td>
+            <td align="center" height="50">
+@*                @Html.LabelForModel(Model.Monday.ClassSession6)*@
+                @Html.LabelForModel(Model.Monday.ClassSession6)
+
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50"style="background-color: #9bb3fa;">
+                <b>Tuesday</b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Registration)
+
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Tuesday.ClassSession1)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Tuesday.ClassSession2)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Tuesday.ClassSession3)
+            </td>
+            <td align="center" height="50"style="background-color: lightgrey;">
+                <b>U<b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Tuesday.ClassSession4)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Tuesday.ClassSession5)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Tuesday.ClassSession6)
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50"style="background-color: #9bb3fa;">
+                <b>Wednesday</b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Registration)
+
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Wednesday.ClassSession1)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Wednesday.ClassSession2)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Wednesday.ClassSession3)
+            </td>
+            <td align="center" height="50"style="background-color: lightgrey;">
+                <b>N<b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Wednesday.ClassSession4)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Wednesday.ClassSession5)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Wednesday.ClassSession6)
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50"style="background-color: #9bb3fa;">
+                <b>Thursday</b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Registration)
+
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Thursday.ClassSession1)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Thursday.ClassSession2)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Thursday.ClassSession3)
+            </td>
+            <td align="center" height="50"style="background-color: lightgrey;">
+                <b>C<b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Thursday.ClassSession4)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Thursday.ClassSession5)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Thursday.ClassSession6)
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50"style="background-color: #9bb3fa;">
+                <b>Friday</b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Registration)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Friday.ClassSession1)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Friday.ClassSession2)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Friday.ClassSession3)
+            </td>
+            <td align="center" height="50"style="background-color: lightgrey;">
+                <b>H<b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Friday.ClassSession4)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Friday.ClassSession5)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelForModel(Model.Friday.ClassSession6)
+            </td>
+        </tr>
+    </table>
+    }
+    else
+    {
+    <p> Teacher has no assigned registration or subject classes. Please assign some to see a timetable.</p>
+    }
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
+</div>
 }
 
 <div>

@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>StaffTimetable</h4>
         <hr />
@@ -21,6 +21,206 @@
             </div>
         </div>
     </div>
+
+    if (Model.HasAssignedClasses)
+    {
+    <table border="5" cellspacing="0" align="center">
+        <!--<caption>Timetable</caption>-->
+
+
+        <tr>
+
+            <td align="center" height="50"
+                width="100">
+                <br>
+                <b>Day/Period</b>
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <b>Registration<br>7:45-8:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <b>I<br>8:00-9:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <b>II<br>9:00-10:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <b>III<br>10:00-11:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <b>11:00-12:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <b>IV<br>12:00-1:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <b>V<br>1:00-2:00</b>
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <b>VI<br>2:00-3:00</b>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td align="center" height="50">
+                <b>Monday</b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Registration)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Monday.ClassSession1)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Monday.ClassSession2)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Monday.ClassSession3)
+            </td>
+            <td align="center" height="50">
+                <b>L<b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Monday.ClassSession4)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Monday.ClassSession5)
+            </td>
+            <td align="center" height="50">
+                @Html.EditorFor(model => model.Monday.ClassSession6)
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Tuesday</b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Registration)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Tuesday.ClassSession1)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Tuesday.ClassSession2)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Tuesday.ClassSession3)
+            </td>
+            <td align="center" height="50">
+                <b>U<b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Tuesday.ClassSession4)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Tuesday.ClassSession5)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Tuesday.ClassSession6)
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Wednesday</b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Registration)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Wednesday.ClassSession1)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Wednesday.ClassSession2)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Wednesday.ClassSession3)
+            </td>
+            <td align="center" height="50">
+                <b>N<b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Wednesday.ClassSession4)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Wednesday.ClassSession5)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Wednesday.ClassSession6)
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Thursday</b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Registration)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Thursday.ClassSession1)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Thursday.ClassSession2)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Thursday.ClassSession3)
+            </td>
+            <td align="center" height="50">
+                <b>C<b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Thursday.ClassSession4)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Thursday.ClassSession5)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Thursday.ClassSession6)
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Friday</b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Registration)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Friday.ClassSession1)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Friday.ClassSession2)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Friday.ClassSession3)
+            </td>
+            <td align="center" height="50">
+               <b>H<b>
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Friday.ClassSession4)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Friday.ClassSession5)
+            </td>
+            <td align="center" height="50">
+                @Html.LabelFor(model => model.Friday.ClassSession6)
+            </td>
+        </tr>
+    </table>
+    }
+    else
+    {
+        <p> Teacher has no assigned registration or subject classes. Please assign some to see a timetable.</p>
+    }
 }
 
 <div>

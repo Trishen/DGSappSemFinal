@@ -150,8 +150,7 @@ namespace DGSappSem2Final.Controllers
             classes.TeacherNameCollection = teacherCollection.Values.ToList();
 
             classes.GradeId = FindFirstKeyByValue(gradeCollection, classes.GradeName);
-            classes.MaxNoOfClasses = db.Grades.Find(classes.GradeId).MaxNoOfClasses;
-            classes.MaxNoOfStudentsPerClass = db.Grades.Find(classes.GradeId).MaxNoOfStudentsPerClass;
+ 
             classes.StaffId = FindFirstKeyByValue(teacherCollection, classes.AssignedTeacher);
 
             if (classes == null)

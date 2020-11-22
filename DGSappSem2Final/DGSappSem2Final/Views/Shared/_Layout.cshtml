@@ -72,16 +72,24 @@
                 <div id="adminPortaldropdown" class="dropdown-content">
                     <ul>@Html.ActionLink("Staff Positions", "Index", "StaffPositions")</ul>
                     <ul>@Html.ActionLink("Staff Members", "Index", "Staffs")</ul>
+                    <ul>@Html.ActionLink("Terms", "Index", "Terms")</ul>
                     <ul>@Html.ActionLink("Grades", "Index", "Grades")</ul>
                     <ul>@Html.ActionLink("Registration Classes", "Index", "Classes")</ul>
                     <ul>@Html.ActionLink("Subjects", "Index", "Subjects")</ul>
                     <ul>@Html.ActionLink("Grade Subjects", "Index", "GradeSubjects")</ul>
                     <ul>@Html.ActionLink("Staff Subject Assignments", "Index", "StaffSubjects")</ul>
+                    <ul>@Html.ActionLink("Extra Murals", "Index", "ExtraMurals")</ul>
                 </div>
 
                 <button onclick="staff()" class="dropbtn">Staff Portal</button>
                 <div id="staffPortaldropdown" class="dropdown-content">
-                    <ul>@Html.ActionLink("Staff Timetable", "Index", "StaffTimetable")</ul>
+                    <ul>@Html.ActionLink("Staff Timetables", "Index", "StaffTimetables")</ul>
+                    <ul>@Html.ActionLink("Staff Attendance", "Index", "StaffTAttendances")</ul>
+                </div>
+
+                <button onclick="student()" class="dropbtn">Student Portal</button>
+                <div id="studentPortaldropdown" class="dropdown-content">
+                    <ul>@Html.ActionLink("Students", "Index", "Students")</ul>
                 </div>
 
 
@@ -112,6 +120,10 @@
 
         function staff() {
             document.getElementById("staffPortaldropdown").classList.toggle("show");
+        }
+
+        function student() {
+            document.getElementById("studentPortaldropdown").classList.toggle("show");
         }
 
         // Close the dropdown if the user clicks outside of it

@@ -1,0 +1,141 @@
+﻿@model IEnumerable<DGSappSem2Final.Models.Student.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Class.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Staff.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentTown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentContact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentGrade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentBirthCertURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentSurName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentContact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentAllowReg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedTeacher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentSurname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentTown)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentContact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentGrade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentBirthCertURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentSurName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentContact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentAllowReg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedTeacher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -45,5 +45,13 @@ namespace DGSappSem2Final.Models
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Staff.StaffSubjects> StaffSubjects { get; set; }
 
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Staff.StaffTimetable> StaffTimetables { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Terms.Term> Terms { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Staff.StaffAttendance> StaffAttendances { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Murals.ExtraMural> ExtraMurals { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Student.Student> Students { get; set; }
     }
 }

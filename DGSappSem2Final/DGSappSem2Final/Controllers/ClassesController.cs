@@ -20,6 +20,12 @@ namespace DGSappSem2Final.Controllers
         {
             var classes = db.Classes.Include(c => c.Grade).Include(c => c.Staff);
             return View(classes.ToList());
+        } 
+        
+        public ActionResult ClassList()
+        {
+            var classes = db.Classes.Include(c => c.Grade).Include(c => c.Staff);
+            return View(classes.ToList());
         }
 
         // GET: Classes/Details/5

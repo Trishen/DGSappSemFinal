@@ -15,7 +15,7 @@ namespace DGSappSem2Final.Models.Grade
         public int GradeId { get; set; }
 
         [Required(ErrorMessage = "Enter Grade ")]
-        [Display(Name = "Grade")]
+        [Display(Name = "Grade Name")]
         [CustomGradeNameValidator]
         public string GradeName { get; set; }
 

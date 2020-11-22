@@ -4,10 +4,10 @@
     ViewBag.Title = "Staff Members";
 }
 
-<h2>Index</h2>
+<h2>Staff Members</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add A New Staff Members", "Create")
 </p>
 <table class="table">
     <tr>
@@ -80,7 +80,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.StaffId }) |
             @Html.ActionLink("Details", "Details", new { id=item.StaffId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.StaffId }) |
-            @Html.ActionLink("QR Code", "ORCode", new { id=item.StaffId })
+            @Html.ActionLink("View QR Code", "QRCode", new { id=item.StaffId })
         </td>
     </tr>
 }

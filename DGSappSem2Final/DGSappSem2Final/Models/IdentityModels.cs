@@ -33,5 +33,17 @@ namespace DGSappSem2Final.Models
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Staff.StaffPositions> StaffPositions { get; set; }
 
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Staff.Staff> Staffs { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Grade.Grades> Grades { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Classes.Classes> Classes { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Subject.Subjects> Subjects { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Grade.GradeSubjects> GradeSubjects { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Staff.StaffSubjects> StaffSubjects { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Staff.StaffTimetable> StaffTimetables { get; set; }
     }
 }

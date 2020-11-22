@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DGSappSem2Final.Models.Grade.GradeSubjects>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Grade.GradeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfLessonsRequired)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grade.GradeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject.SubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfLessonsRequired)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GradeSubjectId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GradeSubjectId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GradeSubjectId })
+        </td>
+    </tr>
+}
+
+</table>

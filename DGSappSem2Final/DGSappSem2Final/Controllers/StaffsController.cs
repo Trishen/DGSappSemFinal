@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DGSappSem2Final.Models;
 using DGSappSem2Final.Models.Staff;
+using QRCoder;
 
 namespace DGSappSem2Final.Controllers
 {
@@ -20,6 +23,50 @@ namespace DGSappSem2Final.Controllers
         {
             var staffs = db.Staffs.Include(s => s.Grade);
             return View(staffs.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult Print()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult QRCode(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Staff staff = db.Staffs.Find(id);
+            if (staff == null)
+            {
+                return HttpNotFound();
+            }
+            string qr = staff.Name;
+            ViewBag.Name = staff.Name;
+            //ViewBag.Sub = staff.SubId.ToString();
+            ViewBag.Con = staff.PhoneNo;
+            QRCodeGenerator ObjQr = new QRCodeGenerator();
+
+            QRCodeData qrCodeData = ObjQr.CreateQrCode(qr, QRCodeGenerator.ECCLevel.Q);
+
+            Bitmap bitMap = new QRCode(qrCodeData).GetGraphic(20);
+
+            using (MemoryStream ms = new MemoryStream())
+
+            {
+
+                bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+                byte[] byteImage = ms.ToArray();
+
+                ViewBag.Url = "data:image/png;base64," + Convert.ToBase64String(byteImage);
+
+            }
+
+            return View();
+
         }
 
         // GET: Staffs/Details/5
@@ -40,8 +87,31 @@ namespace DGSappSem2Final.Controllers
         // GET: Staffs/Create
         public ActionResult Create()
         {
-            ViewBag.StaffPositionId = new SelectList(db.StaffPositions, "StaffPositionId", "StaffPositionName");
-            return View(new Staff());
+            var staffs = db.Staffs.ToList();
+            var positions = db.StaffPositions.ToList();
+            var positionsCollection = new Dictionary<int, string>();
+
+            foreach (var pos in positions)
+            {
+                var limitReached = staffs.Count(x => x.StaffPositionName.Equals(pos.StaffPositionName)) == pos.Limit;
+
+                if (!pos.LimitedPosition)
+                {
+                    positionsCollection.Add(pos.StaffPositionId, pos.StaffPositionName);
+                }
+
+                if (pos.LimitedPosition && !limitReached)
+                {
+                    positionsCollection.Add(pos.StaffPositionId, pos.StaffPositionName);
+                }
+            }
+
+            var staff = new Staff
+            {
+                StaffPositionCollection = positionsCollection.Values.ToList()
+            };
+
+            return View(staff);
         }
 
         // POST: Staffs/Create

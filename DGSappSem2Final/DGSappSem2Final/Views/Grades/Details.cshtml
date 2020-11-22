@@ -1,0 +1,50 @@
+﻿@model DGSappSem2Final.Models.Grade.Grades
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Grades</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxNoOfStudentsInGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxNoOfStudentsInGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxNoOfClasses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxNoOfClasses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxNoOfStudentsPerClass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxNoOfStudentsPerClass)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GradeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

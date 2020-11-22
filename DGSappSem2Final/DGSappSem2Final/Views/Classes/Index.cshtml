@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DGSappSem2Final.Models.Classes.Classes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Grade.GradeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Staff.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GradeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxNoOfClasses)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxNoOfStudentsPerClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfAssignedStudents)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedTeacher)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grade.GradeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GradeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxNoOfClasses)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxNoOfStudentsPerClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfAssignedStudents)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedTeacher)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClassId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClassId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClassId })
+        </td>
+    </tr>
+}
+
+</table>

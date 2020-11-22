@@ -19,6 +19,13 @@ namespace DGSappSem2Final.Controllers
         public ActionResult Index()
         {
             var classes = db.Classes.Include(c => c.Grade).Include(c => c.Staff);
+            var students = db.Students.ToList() ;
+
+            foreach(var c in db.Classes.ToList())
+            {
+                c.NoOfAssignedStudents = students.Where(x=> x.ClassName == c.ClassName).Count();
+            }
+            
             return View(classes.ToList());
         } 
         
@@ -54,6 +61,7 @@ namespace DGSappSem2Final.Controllers
                 TeacherNameCollection = teacherCollection.Values.ToList()
             };
 
+           
             return View(classes);
         }
 
@@ -156,7 +164,7 @@ namespace DGSappSem2Final.Controllers
             classes.TeacherNameCollection = teacherCollection.Values.ToList();
 
             classes.GradeId = FindFirstKeyByValue(gradeCollection, classes.GradeName);
- 
+            classes.MaxNoOfClasses = db.Grades.Find(classes.GradeId).MaxNoOfClasses;
             classes.StaffId = FindFirstKeyByValue(teacherCollection, classes.AssignedTeacher);
 
             if (classes == null)

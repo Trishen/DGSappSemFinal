@@ -33,6 +33,9 @@ namespace DGSappSem2Final.Models.Staff
         [Display(Name = "Assigned Teacher")]
         public string AssignedTeacher { get; set; }
 
+        public bool TimeTableAssigned { get; set; }
+
         public IEnumerable<string> TeacherNameCollection { get; set; }
+        public ClassSessions[] TimeTableLayout { get; set; }
     }
 }

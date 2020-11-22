@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DGSappSem2Final.Models;
+using DGSappSem2Final.Models.Classes;
 using DGSappSem2Final.Models.Student;
 
 namespace DGSappSem2Final.Controllers
@@ -19,6 +20,9 @@ namespace DGSappSem2Final.Controllers
         public ActionResult Index()
         {
             var students = db.Students.Include(s => s.Class).Include(s => s.Staff);
+
+
+
             return View(students.ToList());
         }
 
@@ -47,7 +51,7 @@ namespace DGSappSem2Final.Controllers
 
             ViewBag.ClassId = new SelectList(db.Classes, "ClassId", "ClassName");
             ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title");
-            return View(new Student());
+            return View(student);
         }
 
         // POST: Students/Create
@@ -57,9 +61,28 @@ namespace DGSappSem2Final.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StID,StudentName,StudentSurname,StudentGender,StudentAddress,StudentTown,StudentContact,StudentGrade,StudentEmail,StudentBirthCertURL,Title,ParentName,ParentSurName,ParentContact,ParentEmail,StudentAllowReg,StaffId,AssignedTeacher,ClassId,ClassName")] Student student)
         {
-            student.AssignedTeacher = db.Classes.Where(x => x.GradeName == student.StudentGrade).Select(x => x.AssignedTeacher).FirstOrDefault();
-            student.ClassName = db.Classes.Where(x => x.GradeName == student.StudentGrade).Select(x => x.ClassName).FirstOrDefault();
+            var classes = db.Classes.ToList();
+            var classesToUse = new List<Classes>();
 
+            var students = db.Students.ToList();
+
+              
+            foreach (var c in classes)
+            {
+                var assignedCount = students.Where(x => x.ClassName == c.ClassName).Count();
+
+                if(assignedCount != c.MaxNoOfStudentsPerClass)
+                {
+                    classesToUse.Add(c);
+                }
+
+            }
+
+
+            student.ClassName = classesToUse.Select(x => x.ClassName).FirstOrDefault();
+            student.AssignedTeacher = classesToUse.Select(x => x.AssignedTeacher).FirstOrDefault();
+
+            student.GradeNameCollection = db.Grades.Select(x => x.GradeName).ToList();
             if (ModelState.IsValid)
             {
                 db.Students.Add(student);

@@ -34,7 +34,7 @@ namespace DGSappSem2Final.Models.Grade
         public string SubjectName { get; set; }
 
         [Required]
-        [Display(Name = "No. Of Lessons Required for Grade Subject")]
+        [Display(Name = "No. Of Lessons Required")]
         [Range(1,6)]
         public int NoOfLessonsRequired { get; set; }
 

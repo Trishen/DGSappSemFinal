@@ -12,12 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Grade.GradeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Staff.Title)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ClassName)
         </th>
         <th>
@@ -41,12 +35,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Grade.GradeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Staff.Title)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.ClassName)
         </td>
         <td>
@@ -65,9 +53,17 @@
             @Html.DisplayFor(modelItem => item.AssignedTeacher)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClassId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClassId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClassId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ClassId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ClassId }) |
+
+            @if (item.NoOfAssignedStudents == 0)
+            {
+                @Html.ActionLink("Delete", "Delete", new { id = item.GradeId })
+            }
+            else
+            {
+                @Html.ActionLink("View Class List", "ViewClassList", new { id = item.ClassId })
+            }
         </td>
     </tr>
 }

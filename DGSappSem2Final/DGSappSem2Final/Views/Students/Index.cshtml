@@ -12,12 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Class.ClassName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Staff.Title)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.StudentName)
         </th>
         <th>
@@ -59,9 +53,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ParentEmail)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.StudentAllowReg)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.AssignedTeacher)
         </th>
@@ -73,12 +67,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Class.ClassName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Staff.Title)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.StudentName)
         </td>
@@ -121,9 +109,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.ParentEmail)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.StudentAllowReg)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.AssignedTeacher)
         </td>

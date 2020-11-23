@@ -34,10 +34,11 @@ namespace DGSappSem2Final.Controllers
                         AssignedTeacher = displayName,
                         TimeTableLayout = GetTimeTableLayout(new List<StaffSubjects>())
                     });
-
                     db.SaveChanges();
                 }
             }
+
+            //TimeTableReset();
 
             return View(db.StaffTimetables.ToList());
         }
@@ -115,6 +116,12 @@ namespace DGSappSem2Final.Controllers
                 if (assignedSubs.Count > 0)
                 {
                     staffTimetable.TimeTableLayout = GetTimeTableLayout(assignedSubs);
+
+                    staffTimetable.Monday = staffTimetable.TimeTableLayout[0];
+                    staffTimetable.Tuesday = staffTimetable.TimeTableLayout[1];
+                    staffTimetable.Wednesday = staffTimetable.TimeTableLayout[2];
+                    staffTimetable.Thursday = staffTimetable.TimeTableLayout[3];
+                    staffTimetable.Friday = staffTimetable.TimeTableLayout[4];
                 }
 
                 if (staffTimetable == null)
@@ -122,10 +129,10 @@ namespace DGSappSem2Final.Controllers
                     return HttpNotFound();
                 }
 
-                staffTimetable.TimeTableAssigned = false;
+                staffTimetable.TimeTableAssigned = true;
                 db.SaveChanges();
             }
-             
+
             return View(staffTimetable);
         }
 
@@ -141,7 +148,7 @@ namespace DGSappSem2Final.Controllers
 
                 var lessionCount = gradeInfo.NoOfLessonsRequired;
 
-                for (int i = 0; i <= 4; i++)
+                for (int i = 0; i < lessionCount; i++)
                 {
                     template = AddLesson(template, gradeInfo.Grade.GradeName, gradeInfo.Subject.SubjectName);
                 }
@@ -152,14 +159,14 @@ namespace DGSappSem2Final.Controllers
         private ClassSessions[] AddLesson(ClassSessions[] classSessions, string gradeName, string subjectName)
         {
             var rDay = 0;
-            var rSession =0;
+            var rSession = 0;
             var block = false;
 
             do
             {
-                 rDay = GetRandomDay();
-                 rSession = GetRandomDay();
-                 block = SessionFree(classSessions, rDay, rSession);
+                rDay = GetRandomDay();
+                rSession = GetRandomSession();
+                block = SessionFree(classSessions, rDay, rSession);
 
             } while (block == false);
 
@@ -179,12 +186,12 @@ namespace DGSappSem2Final.Controllers
 
             if (session == 1)
             {
-                 classSessions[day].ClassSession1 = description;
+                classSessions[day].ClassSession1 = description;
             }
 
             if (session == 2)
             {
-                 classSessions[day].ClassSession2 = description;
+                classSessions[day].ClassSession2 = description;
             }
             if (session == 3)
             {
@@ -210,7 +217,7 @@ namespace DGSappSem2Final.Controllers
         private bool SessionFree(ClassSessions[] classSessions, int day, int session)
         {
             day = day - 1;
-            if(session == 1)
+            if (session == 1)
             {
                 return classSessions[day].ClassSession1 == "FREE" || classSessions[day].ClassSession1 == null;
             }
@@ -254,12 +261,12 @@ namespace DGSappSem2Final.Controllers
 
         private int GetRandomDay()
         {
-            return GetRandomValue(5);
+            return GetRandomValue(6);
         }
 
         private int GetRandomSession()
         {
-            return GetRandomValue(6);
+            return GetRandomValue(7);
         }
 
         private int GetRandomValue(int max)
@@ -319,5 +326,51 @@ namespace DGSappSem2Final.Controllers
             }
             base.Dispose(disposing);
         }
+
+        private void TimeTableReset()
+        {
+            foreach (var t in db.StaffTimetables.ToList())
+            {
+                t.TimeTableAssigned = false;
+                t.Monday.ClassSession1 = "FREE";
+                t.Monday.ClassSession2 = "FREE";
+                t.Monday.ClassSession3 = "FREE";
+                t.Monday.ClassSession4 = "FREE";
+                t.Monday.ClassSession5 = "FREE";
+                t.Monday.ClassSession6 = "FREE";
+
+                t.Tuesday.ClassSession1 = "FREE";
+                t.Tuesday.ClassSession2 = "FREE";
+                t.Tuesday.ClassSession3 = "FREE";
+                t.Tuesday.ClassSession4 = "FREE";
+                t.Tuesday.ClassSession5 = "FREE";
+                t.Tuesday.ClassSession6 = "FREE";
+
+                t.Wednesday.ClassSession1 = "FREE";
+                t.Wednesday.ClassSession2 = "FREE";
+                t.Wednesday.ClassSession3 = "FREE";
+                t.Wednesday.ClassSession4 = "FREE";
+                t.Wednesday.ClassSession5 = "FREE";
+                t.Wednesday.ClassSession6 = "FREE";
+
+                t.Thursday.ClassSession1 = "FREE";
+                t.Thursday.ClassSession2 = "FREE";
+                t.Thursday.ClassSession3 = "FREE";
+                t.Thursday.ClassSession4 = "FREE";
+                t.Thursday.ClassSession5 = "FREE";
+                t.Thursday.ClassSession6 = "FREE";
+
+                t.Friday.ClassSession1 = "FREE";
+                t.Friday.ClassSession2 = "FREE";
+                t.Friday.ClassSession3 = "FREE";
+                t.Friday.ClassSession4 = "FREE";
+                t.Friday.ClassSession5 = "FREE";
+                t.Friday.ClassSession6 = "FREE";
+
+                db.SaveChanges();
+            }
+        }
+
+
     }
 }

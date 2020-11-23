@@ -44,5 +44,6 @@ namespace DGSappSem2Final.Models.Staff
         public string AssignedTeacher { get; set; }
 
         public IEnumerable<string> TeacherNameCollection { get; set; }
+        public IEnumerable<string> SubjectNameCollection { get; set; }
     }
 }

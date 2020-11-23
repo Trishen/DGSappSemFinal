@@ -53,5 +53,11 @@ namespace DGSappSem2Final.Models
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Murals.ExtraMural> ExtraMurals { get; set; }
 
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Student.Student> Students { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Library.Book> Books { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Library.BookCategory> BookCategories { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Library.BookReservation> BookReservations { get; set; }
     }
 }

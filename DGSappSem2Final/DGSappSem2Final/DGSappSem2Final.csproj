@@ -209,6 +209,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookReservationsController.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\ExtraMuralsController.cs" />
     <Compile Include="Controllers\GradesController.cs" />
@@ -224,6 +226,8 @@
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TermsController.cs" />
     <Compile Include="Enums\AgeGroups.cs" />
+    <Compile Include="Enums\BookCategory.cs" />
+    <Compile Include="Enums\BookStatus.cs" />
     <Compile Include="Enums\Roles.cs" />
     <Compile Include="Enums\Title.cs" />
     <Compile Include="Global.asax.cs">
@@ -252,7 +256,8 @@
     <Compile Include="Models\Grade\Grades.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Murals\ExtraMuralAssignment.cs" />
+    <Compile Include="Models\Murals\ExtraMuralAgeGroups.cs" />
+    <Compile Include="Models\Murals\StudentExtraMural.cs" />
     <Compile Include="Models\Reports\Report.cs" />
     <Compile Include="Models\Reports\SubjectReport.cs" />
     <Compile Include="Models\Staff\StaffAttendance.cs" />
@@ -391,6 +396,17 @@
     <Content Include="Views\Students\Create.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Classes\ClassList.cshtml" />
+    <Content Include="Views\Books\Create.cshtml" />
+    <Content Include="Views\Books\Delete.cshtml" />
+    <Content Include="Views\Books\Details.cshtml" />
+    <Content Include="Views\Books\Edit.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
+    <Content Include="Views\BookReservations\Create.cshtml" />
+    <Content Include="Views\BookReservations\Delete.cshtml" />
+    <Content Include="Views\BookReservations\Details.cshtml" />
+    <Content Include="Views\BookReservations\Edit.cshtml" />
+    <Content Include="Views\BookReservations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

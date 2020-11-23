@@ -44,7 +44,7 @@ namespace DGSappSem2Final.Models.Student
         public string StudentGrade { get; set; }
 
         [Required(ErrorMessage = "Enter your email"), DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
+        [Display(Name = "Student Email")]
         public string StudentEmail { get; set; }
 
         [Required(ErrorMessage = "Please enter your date of birth "), DataType(DataType.Date)]
@@ -62,24 +62,24 @@ namespace DGSappSem2Final.Models.Student
 
         //[Display(Name = "Upload your study permit")]
         //public string StudentPermitURL { get; set; }
-        [Required(ErrorMessage = "Select title")]
+        [Required(ErrorMessage = "Gaurdian Title")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Enter a Gaurdian's name")]
-        [Display(Name = "Gaurdian's Name")]
+        [Display(Name = "Gaurdian Name")]
         public string ParentName { get; set; }
 
         [Required(ErrorMessage = "Enter first name")]
-        [Display(Name = "Gaurdian's Surname")]
+        [Display(Name = "Gaurdian Surname")]
         public string ParentSurName { get; set; }
 
         [Required(ErrorMessage = "Enter contact number"), DataType(DataType.PhoneNumber)]
-        [Display(Name = "GGuardian's contact number")]
+        [Display(Name = "Guardian Contact Number")]
         [Phone]
         public string ParentContact { get; set; }
 
         [Required(ErrorMessage = "Enter your email"), DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
+        [Display(Name = "Guardian Email")]
         public string ParentEmail { get; set; }
 
         [Display(Name = "Allow registration")]

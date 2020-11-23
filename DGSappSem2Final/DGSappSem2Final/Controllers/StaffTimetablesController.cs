@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DGSappSem2Final.Models;
+using DGSappSem2Final.Models.Classes;
 using DGSappSem2Final.Models.Staff;
 
 namespace DGSappSem2Final.Controllers
@@ -30,13 +31,13 @@ namespace DGSappSem2Final.Controllers
                 {
                     db.StaffTimetables.Add(new StaffTimetable
                     {
-                        AssignedTeacher = displayName
-                    }); ;
+                        AssignedTeacher = displayName,
+                        TimeTableLayout = GetTimeTableLayout(new List<StaffSubjects>())
+                    });
 
                     db.SaveChanges();
                 }
             }
-
 
             return View(db.StaffTimetables.ToList());
         }
@@ -89,34 +90,184 @@ namespace DGSappSem2Final.Controllers
             }
             StaffTimetable staffTimetable = db.StaffTimetables.Find(id);
 
-            var reg = db.Classes.ToList();
-            var assignedReg = reg.Where(x => x.AssignedTeacher == staffTimetable.AssignedTeacher).ToList();
-
-            var staffSubs = db.StaffSubjects.ToList();
-            var assignedSubs = staffSubs.Where(x=> x.AssignedTeacher == staffTimetable.AssignedTeacher).ToList();
-
-            if (assignedSubs.Count > 0 || assignedReg.Count == 1)
+            if (!staffTimetable.TimeTableAssigned)
             {
-                staffTimetable.HasAssignedClasses = true;
-            }
-            else
-            {
-                staffTimetable.HasAssignedClasses = false;
-            }
+                var reg = db.Classes.ToList();
+                var assignedReg = reg.Where(x => x.AssignedTeacher == staffTimetable.AssignedTeacher).ToList();
 
-            if (assignedReg.Count == 1)
-            {
-                staffTimetable.Registration = assignedReg.FirstOrDefault().ClassName;
+                var staffSubs = db.StaffSubjects.ToList();
+                var assignedSubs = staffSubs.Where(x => x.AssignedTeacher == staffTimetable.AssignedTeacher).ToList();
+
+                if (assignedSubs.Count > 0 || assignedReg.Count == 1)
+                {
+                    staffTimetable.HasAssignedClasses = true;
+                }
+                else
+                {
+                    staffTimetable.HasAssignedClasses = false;
+                }
+
+                if (assignedReg.Count == 1)
+                {
+                    staffTimetable.Registration = assignedReg.FirstOrDefault().ClassName;
+                }
+
+                if (assignedSubs.Count > 0)
+                {
+                    staffTimetable.TimeTableLayout = GetTimeTableLayout(assignedSubs);
+                }
+
+                if (staffTimetable == null)
+                {
+                    return HttpNotFound();
+                }
+
+                staffTimetable.TimeTableAssigned = false;
+                db.SaveChanges();
             }
-
-
-
-            if (staffTimetable == null)
-            {
-                return HttpNotFound();
-            }
+             
             return View(staffTimetable);
         }
+
+        private ClassSessions[] GetTimeTableLayout(List<StaffSubjects> assignedStaffSubs)
+        {
+            var template = GetTimeTableTemplate();
+
+            foreach (var assignedSub in assignedStaffSubs)
+            {
+                var gradeInfo = db.GradeSubjects
+                    .Where(x => x.Grade.GradeName == assignedSub.GradeName
+                    && x.Subject.SubjectName == assignedSub.SubjectName).FirstOrDefault();
+
+                var lessionCount = gradeInfo.NoOfLessonsRequired;
+
+                for (int i = 0; i <= 4; i++)
+                {
+                    template = AddLesson(template, gradeInfo.Grade.GradeName, gradeInfo.Subject.SubjectName);
+                }
+            }
+            return template;
+        }
+
+        private ClassSessions[] AddLesson(ClassSessions[] classSessions, string gradeName, string subjectName)
+        {
+            var rDay = 0;
+            var rSession =0;
+            var block = false;
+
+            do
+            {
+                 rDay = GetRandomDay();
+                 rSession = GetRandomDay();
+                 block = SessionFree(classSessions, rDay, rSession);
+
+            } while (block == false);
+
+
+            classSessions = SetSession(classSessions, rDay, rSession, gradeName, subjectName);
+
+
+
+            return classSessions;
+        }
+
+        private ClassSessions[] SetSession(ClassSessions[] classSessions, int day, int session, string grade, string subject)
+        {
+            var description = grade + "\n" + subject;
+
+            day = day - 1;
+
+            if (session == 1)
+            {
+                 classSessions[day].ClassSession1 = description;
+            }
+
+            if (session == 2)
+            {
+                 classSessions[day].ClassSession2 = description;
+            }
+            if (session == 3)
+            {
+                classSessions[day].ClassSession3 = description;
+            }
+            if (session == 4)
+            {
+                classSessions[day].ClassSession4 = description;
+            }
+            if (session == 5)
+            {
+                classSessions[day].ClassSession5 = description;
+            }
+            if (session == 6)
+            {
+                classSessions[day].ClassSession6 = description;
+            }
+
+            return classSessions;
+        }
+
+
+        private bool SessionFree(ClassSessions[] classSessions, int day, int session)
+        {
+            day = day - 1;
+            if(session == 1)
+            {
+                return classSessions[day].ClassSession1 == "FREE" || classSessions[day].ClassSession1 == null;
+            }
+
+            if (session == 2)
+            {
+                return classSessions[day].ClassSession2 == "FREE" || classSessions[day].ClassSession2 == null;
+            }
+            if (session == 3)
+            {
+                return classSessions[day].ClassSession3 == "FREE" || classSessions[day].ClassSession3 == null;
+            }
+            if (session == 4)
+            {
+                return classSessions[day].ClassSession4 == "FREE" || classSessions[day].ClassSession4 == null;
+            }
+            if (session == 5)
+            {
+                return classSessions[day].ClassSession5 == "FREE" || classSessions[day].ClassSession5 == null;
+            }
+            if (session == 6)
+            {
+                return classSessions[day].ClassSession6 == "FREE" || classSessions[day].ClassSession6 == null;
+            }
+
+            return false;
+        }
+
+        //To allow for adding specified frees
+        private ClassSessions[] GetTimeTableTemplate()
+        {
+            var classSessions = new ClassSessions[5];
+            classSessions[0] = new ClassSessions();
+            classSessions[1] = new ClassSessions();
+            classSessions[2] = new ClassSessions();
+            classSessions[3] = new ClassSessions();
+            classSessions[4] = new ClassSessions();
+
+            return classSessions;
+        }
+
+        private int GetRandomDay()
+        {
+            return GetRandomValue(5);
+        }
+
+        private int GetRandomSession()
+        {
+            return GetRandomValue(6);
+        }
+
+        private int GetRandomValue(int max)
+        {
+            var random = new Random();
+            return random.Next(1, max);
+        }
+
 
         // POST: StaffTimetables/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DGSappSem2Final.Models.Murals
 {
-    public class ExtraMuralAssignment
+    public class StudentExtraMural
     {
     }
 }

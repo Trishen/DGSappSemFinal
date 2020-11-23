@@ -4,21 +4,87 @@
     ViewBag.Title = "Create Staff Member";
 }
 
-<h2>Create</h2>
+@*<h2>Create</h2>*@
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+        /*
+            .title {
+                color: grey;
+                font-size: 18px;
+            }
+
+            button {
+                border: none;
+                outline: 0;
+                display: inline-block;
+                padding: 8px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                font-size: 18px;
+            }*/
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+            button:hover, a:hover {
+                opacity: 0.7;
+            }
+    </style>
+
+    <script>
+            var loadFile = function (event) {
+                var image = document.getElementById('output');
+
+                image.src = URL.createObjectURL(event.target.files[0]);
+
+            };
+    </script>
+
     <div class="form-horizontal">
-        
+
     </div>
 }
 
 <div>
     @Html.ActionLink("Print QR Card", "Print")
 </div>
+<br
+    
+    
+    />
+
+
+
+<body>
+    <h2>Sorry there is no printer connected</h2>
+    <div> @Html.ActionLink("Return to record", "Index")</div>
+</body>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

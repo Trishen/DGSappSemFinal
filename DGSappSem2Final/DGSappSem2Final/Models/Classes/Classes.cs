@@ -54,6 +54,7 @@ namespace DGSappSem2Final.Models.Classes
 
         public IEnumerable<string> GradeNameCollection { get; set; }
         public IEnumerable<string> TeacherNameCollection { get; set; }
+        //public IEnumerable<string> AssignedTeacherCollection { get; set; }
 
     }
 }

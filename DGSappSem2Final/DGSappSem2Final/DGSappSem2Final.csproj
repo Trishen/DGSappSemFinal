@@ -306,8 +306,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BookReservationsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\Chat2Controller.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\ExtraMuralsController.cs" />
     <Compile Include="Controllers\GradesController.cs" />
@@ -337,6 +339,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Assements\Assessment.cs" />
+    <Compile Include="Models\Chat\ChatContext.cs" />
+    <Compile Include="Models\Chat\ChatUser.cs" />
+    <Compile Include="Models\Chat\Conversation.cs" />
     <Compile Include="Models\Classes\Classes.cs" />
     <Compile Include="Models\Classes\ClassSessions.cs" />
     <Compile Include="Models\Events\BookEvent.cs" />
@@ -505,6 +510,7 @@
     <Content Include="Views\BookReservations\Edit.cshtml" />
     <Content Include="Views\BookReservations\Index.cshtml" />
     <Content Include="Views\BookReservations\SMSReminder.cshtml" />
+    <Content Include="Views\Chat2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

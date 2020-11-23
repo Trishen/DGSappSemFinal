@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using DGSappSem2Final.Models;
 using DGSappSem2Final.Models.Library;
 using DGSappSem2Final.Models.Student;
+using Nexmo.Api;
 
 namespace DGSappSem2Final.Controllers
 {
@@ -36,6 +37,33 @@ namespace DGSappSem2Final.Controllers
             }
             return View(bookReservation);
         }
+
+        public ActionResult SMSReminder(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BookReservation bookReservation = db.BookReservations.Find(id);
+
+            var client = new Client(creds: new Nexmo.Api.Request.Credentials
+            {
+                ApiKey = "7692f400",
+                ApiSecret = "Zua8eJBJEcveP0Zn"
+            });
+            var results = client.SMS.Send(request: new SMS.SMSRequest
+            {
+                from = "Vonage APIs",
+                to = "27817375820",
+                //update to include book information 
+
+                text = "Hello from Vonage SMS API"
+            });
+
+            return View(bookReservation);
+        }
+
+
 
         // GET: BookReservations/Create
         public ActionResult Create()

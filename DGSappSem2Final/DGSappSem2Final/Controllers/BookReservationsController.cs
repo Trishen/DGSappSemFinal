@@ -10,6 +10,7 @@ using DGSappSem2Final.Models;
 using DGSappSem2Final.Models.Library;
 using DGSappSem2Final.Models.Student;
 using Nexmo.Api;
+using System.Net.Mail;
 
 namespace DGSappSem2Final.Controllers
 {
@@ -59,6 +60,28 @@ namespace DGSappSem2Final.Controllers
 
                 text = "Hello from Vonage SMS API"
             });
+
+            return View(bookReservation);
+        }
+
+
+        public ActionResult EmailReminder(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BookReservation bookReservation = db.BookReservations.Find(id);
+
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("dgstest2020@gmail.com", "Dgs2020!"),
+                EnableSsl = true,
+            };
+
+
+            smtpClient.Send("ctrishen@gmail.com", "ctrishen@gmail.com", "Test Mail", "HELOOO!!!!!!!!!");
 
             return View(bookReservation);
         }

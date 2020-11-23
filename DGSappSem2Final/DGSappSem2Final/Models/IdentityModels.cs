@@ -59,5 +59,9 @@ namespace DGSappSem2Final.Models
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Library.BookCategory> BookCategories { get; set; }
 
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Library.BookReservation> BookReservations { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Grade.Fee> Fees { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Student.StudentFees> StudentFees { get; set; }
     }
 }

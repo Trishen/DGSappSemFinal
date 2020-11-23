@@ -310,6 +310,7 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\ExtraMuralsController.cs" />
+    <Compile Include="Controllers\FeesController.cs" />
     <Compile Include="Controllers\GradesController.cs" />
     <Compile Include="Controllers\GradeSubjectsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -319,6 +320,7 @@
     <Compile Include="Controllers\StaffsController.cs" />
     <Compile Include="Controllers\StaffSubjectsController.cs" />
     <Compile Include="Controllers\StaffTimetablesController.cs" />
+    <Compile Include="Controllers\StudentFeesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TermsController.cs" />
@@ -345,6 +347,7 @@
     <Compile Include="Models\Events\Venue.cs" />
     <Compile Include="Models\FileUpload\BlobViewModel.cs" />
     <Compile Include="Models\FileUpload\FileUploadVm.cs" />
+    <Compile Include="Models\Grade\Fee.cs" />
     <Compile Include="Models\Library\Book.cs" />
     <Compile Include="Models\Library\BookCategory.cs" />
     <Compile Include="Models\Library\BookReservation.cs" />
@@ -363,6 +366,7 @@
     <Compile Include="Models\Staff\StaffPositions.cs" />
     <Compile Include="Models\Staff\StaffSubjects.cs" />
     <Compile Include="Models\Student\Student.cs" />
+    <Compile Include="Models\Student\StudentFees.cs" />
     <Compile Include="Models\Subject\CourseMaterial.cs" />
     <Compile Include="Models\Subject\SubjectAssignment.cs" />
     <Compile Include="Models\Subject\Subjects.cs" />
@@ -505,6 +509,16 @@
     <Content Include="Views\BookReservations\Edit.cshtml" />
     <Content Include="Views\BookReservations\Index.cshtml" />
     <Content Include="Views\BookReservations\SMSReminder.cshtml" />
+    <Content Include="Views\Fees\Create.cshtml" />
+    <Content Include="Views\Fees\Delete.cshtml" />
+    <Content Include="Views\Fees\Details.cshtml" />
+    <Content Include="Views\Fees\Edit.cshtml" />
+    <Content Include="Views\Fees\Index.cshtml" />
+    <Content Include="Views\StudentFees\Create.cshtml" />
+    <Content Include="Views\StudentFees\Delete.cshtml" />
+    <Content Include="Views\StudentFees\Details.cshtml" />
+    <Content Include="Views\StudentFees\Edit.cshtml" />
+    <Content Include="Views\StudentFees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

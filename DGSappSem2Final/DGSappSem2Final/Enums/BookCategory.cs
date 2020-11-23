@@ -15,9 +15,5 @@ namespace DGSappSem2Final.Enums
         Mystery,
         Horror,
         Thriller,
-
-
-
-
     }
 }

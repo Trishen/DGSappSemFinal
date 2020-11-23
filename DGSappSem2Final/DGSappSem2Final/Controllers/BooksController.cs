@@ -18,8 +18,23 @@ namespace DGSappSem2Final.Controllers
         // GET: Books
         public ActionResult Index()
         {
-            var books = db.Books.Include(b => b.BookCategory);
-            return View(books.ToList());
+            var books = db.Books.ToList();
+            var bookres = db.BookReservations.ToList();
+
+            foreach(var b in books)
+            {
+                if(bookres.Any(x=> x.BookName == b.Title))
+                {
+                    var entry = bookres.Where(x => x.BookName == b.Title).First();
+                    b.Status = Enums.BookStatus.Booked.ToString();
+                }
+              else
+                {
+                    b.Status = Enums.BookStatus.Available.ToString();
+                }             
+            }
+
+            return View(books);
         }
 
         // GET: Books/Details/5
@@ -40,8 +55,7 @@ namespace DGSappSem2Final.Controllers
         // GET: Books/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.BookCategories, "CategoryId", "CategoryName");
-            return View();
+            return View(new Book());
         }
 
         // POST: Books/Create
@@ -49,8 +63,9 @@ namespace DGSappSem2Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookId,CategoryId,Title,Description,Picture,Author,Numpages,Genre,Status")] Book book)
+        public ActionResult Create([Bind(Include = "BookId,Genre,Title,Description,Author,Numpages,Status")] Book book)
         {
+            book.Status = Enums.BookStatus.Available.ToString();
             if (ModelState.IsValid)
             {
                 db.Books.Add(book);
@@ -58,7 +73,6 @@ namespace DGSappSem2Final.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.BookCategories, "CategoryId", "CategoryName", book.CategoryId);
             return View(book);
         }
 
@@ -74,7 +88,6 @@ namespace DGSappSem2Final.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.BookCategories, "CategoryId", "CategoryName", book.CategoryId);
             return View(book);
         }
 
@@ -83,7 +96,7 @@ namespace DGSappSem2Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BookId,CategoryId,Title,Description,Picture,Author,Numpages,Genre,Status")] Book book)
+        public ActionResult Edit([Bind(Include = "BookId,Genre,Title,Description,Author,Numpages,Status")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +104,6 @@ namespace DGSappSem2Final.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.BookCategories, "CategoryId", "CategoryName", book.CategoryId);
             return View(book);
         }
 

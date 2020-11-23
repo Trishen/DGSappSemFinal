@@ -90,8 +90,13 @@
                 <button onclick="student()" class="dropbtn">Student Portal</button>
                 <div id="studentPortaldropdown" class="dropdown-content">
                     <ul>@Html.ActionLink("Students", "Index", "Students")</ul>
+                    <ul>@Html.ActionLink("Book Reservations", "Index", "BookReservations")</ul>
                 </div>
 
+                <button onclick="library()" class="dropbtn">Library Portal</button>
+                <div id="libraryPortaldropdown" class="dropdown-content">
+                    <ul>@Html.ActionLink("Library", "Index", "Books")</ul>
+                </div>
 
 
 
@@ -124,6 +129,10 @@
 
         function student() {
             document.getElementById("studentPortaldropdown").classList.toggle("show");
+        }
+
+        function library() {
+            document.getElementById("libraryPortaldropdown").classList.toggle("show");
         }
 
         // Close the dropdown if the user clicks outside of it

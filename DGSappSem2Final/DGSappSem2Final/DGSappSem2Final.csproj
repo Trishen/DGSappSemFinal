@@ -519,6 +519,7 @@
     <Content Include="Views\StudentFees\Details.cshtml" />
     <Content Include="Views\StudentFees\Edit.cshtml" />
     <Content Include="Views\StudentFees\Index.cshtml" />
+    <Content Include="Views\BookReservations\CheckIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

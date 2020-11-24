@@ -1,28 +1,29 @@
 ﻿@model IEnumerable<DGSappSem2Final.Models.Library.BookReservation>
 
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CheckIn";
 }
 
-<h2>Book Resevations </h2>
+<h2>Book Return </h2>
 
-<p>
-    @Html.ActionLink("Check out a book ", "Create")
-</p>
+@*<p>
+        @Html.ActionLink("Check In A Book", "Edit")
+    </p>*@
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Book.Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.StudentName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.BookName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.StudentName)
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.ReservationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentEmail)
-            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CollectionDate)
         </th>
@@ -39,17 +40,17 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Book.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.StudentName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.BookName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StudentName)
             </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.ReservationDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentEmail)
-                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.CollectionDate)
             </td>
@@ -60,17 +61,11 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.ReservationId }) |*@
+                @Html.ActionLink("Check In A Book", "Edit", new { id = item.ReservationId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ReservationId }) |
-                @*@Html.ActionLink("Delete", "Delete", new { id = item.ReservationId }) |*@
-                @*if statement go here*@
-
-                @Html.ActionLink("SMS Reminder", "SMSReminder", new { id = item.ReservationId })
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.ReservationId })*@
             </td>
         </tr>
     }
 
 </table>
-
-@*@Html.ActionLink("Check in a book ", "Edit")*@
-

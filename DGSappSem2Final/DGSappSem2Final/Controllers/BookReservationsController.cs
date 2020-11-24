@@ -22,7 +22,15 @@ namespace DGSappSem2Final.Controllers
         public ActionResult Index()
         {
             return View(db.BookReservations.ToList());
+        }  
+        
+        public ActionResult CheckIn()
+        {
+            return View(db.BookReservations.ToList());
         }
+
+
+
 
         // GET: BookReservations/Details/5
         public ActionResult Details(int? id)

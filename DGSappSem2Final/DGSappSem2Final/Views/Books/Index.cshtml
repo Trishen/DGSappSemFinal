@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Library</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add a new book ", "Create")
 </p>
 <table class="table">
     <tr>
@@ -17,9 +17,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Description)
-        </th>
+        </th>*@
         @*<th>
             @Html.DisplayNameFor(model => model.Picture)
         </th>*@
@@ -43,9 +43,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Description)
-        </td>
+        </td>*@
         @*<td>
             @Html.DisplayFor(modelItem => item.Picture)
         </td>*@
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookId })
+           @* @Html.ActionLink("Edit", "Edit", new { id=item.BookId }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.BookId }) 
+           @* @Html.ActionLink("Delete", "Delete", new { id=item.BookId })*@
         </td>
     </tr>
 }

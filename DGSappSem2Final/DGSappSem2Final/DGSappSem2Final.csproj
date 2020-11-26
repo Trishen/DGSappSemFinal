@@ -325,6 +325,7 @@
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TermsController.cs" />
+    <Compile Include="Controllers\VenuesController.cs" />
     <Compile Include="Enums\AgeGroups.cs" />
     <Compile Include="Enums\BookCategory.cs" />
     <Compile Include="Enums\BookStatus.cs" />
@@ -528,6 +529,11 @@
     <Content Include="Views\Assessments\Details.cshtml" />
     <Content Include="Views\Assessments\Edit.cshtml" />
     <Content Include="Views\Assessments\Index.cshtml" />
+    <Content Include="Views\Venues\Create.cshtml" />
+    <Content Include="Views\Venues\Delete.cshtml" />
+    <Content Include="Views\Venues\Details.cshtml" />
+    <Content Include="Views\Venues\Edit.cshtml" />
+    <Content Include="Views\Venues\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

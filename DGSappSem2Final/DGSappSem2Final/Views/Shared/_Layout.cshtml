@@ -63,10 +63,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 @*<ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        </ul>*@
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>*@
 
                 <button onclick="admin()" class="dropbtn">Admin Portal</button>
                 <div id="adminPortaldropdown" class="dropdown-content">
@@ -80,6 +80,8 @@
                     <ul>@Html.ActionLink("Grade Subjects", "Index", "GradeSubjects")</ul>
                     <ul>@Html.ActionLink("Staff Subject Assignments", "Index", "StaffSubjects")</ul>
                     <ul>@Html.ActionLink("Extra Murals", "Index", "ExtraMurals")</ul>
+                    @*<ul>@Html.ActionLink("Extra Mural Teams", "Index", "ExtraMurals")</ul>*@
+                    <ul>@Html.ActionLink("Venues", "Index", "Venues")</ul>
                 </div>
 
                 <button onclick="staff()" class="dropbtn">Staff Portal</button>

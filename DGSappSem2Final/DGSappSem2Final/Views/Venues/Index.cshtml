@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DGSappSem2Final.Models.Events.Venue>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.venueName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.venueName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.venueId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.venueId }) |
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.venueId })*@
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

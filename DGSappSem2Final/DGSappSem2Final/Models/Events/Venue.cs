@@ -21,14 +21,15 @@ namespace DGSappSem2Final.Models.Events
 
         public string Location { get; set; }
 
-        [Display(Name = "Event Price"), DataType(DataType.Currency)]
-        public decimal? price { get; set; }
-        public virtual ICollection<Event> Events { get; set; }
+        //[Display(Name = "Event Price"), DataType(DataType.Currency)]
+        //public decimal? price { get; set; }
+        //public virtual ICollection<Event> Events { get; set; }
 
         [Required]
         [Display(Name = "Capacity")]
-        [Range(500, 1000)]
+        [Range(2, 1000)]
         public int capacity { get; set; }
+
         public Status Status { get; set; }
         //  public virtual ICollection<BookEvent> BookEvents { get; set; }
     }
@@ -36,8 +37,7 @@ namespace DGSappSem2Final.Models.Events
     public enum Status
     {
         Avaliable,
-        [Display(Name = "Not Avaliable")]
-        Not_Avaliable
+        Booked
     }
 }
 

@@ -306,11 +306,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AssessmentsController.cs" />
     <Compile Include="Controllers\BookReservationsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
+    <Compile Include="Controllers\ExtraMuralAgeGroupsController.cs" />
     <Compile Include="Controllers\ExtraMuralsController.cs" />
     <Compile Include="Controllers\FeesController.cs" />
+    <Compile Include="Controllers\FileUploadsController.cs" />
     <Compile Include="Controllers\GradesController.cs" />
     <Compile Include="Controllers\GradeSubjectsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -520,6 +523,21 @@
     <Content Include="Views\StudentFees\Edit.cshtml" />
     <Content Include="Views\StudentFees\Index.cshtml" />
     <Content Include="Views\BookReservations\CheckIn.cshtml" />
+    <Content Include="Views\Assessments\Create.cshtml" />
+    <Content Include="Views\Assessments\Delete.cshtml" />
+    <Content Include="Views\Assessments\Details.cshtml" />
+    <Content Include="Views\Assessments\Edit.cshtml" />
+    <Content Include="Views\Assessments\Index.cshtml" />
+    <Content Include="Views\FileUploads\Create.cshtml" />
+    <Content Include="Views\FileUploads\Delete.cshtml" />
+    <Content Include="Views\FileUploads\Details.cshtml" />
+    <Content Include="Views\FileUploads\Edit.cshtml" />
+    <Content Include="Views\FileUploads\Index.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups\Create.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups\Delete.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups\Details.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups\Edit.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

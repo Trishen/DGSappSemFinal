@@ -63,5 +63,11 @@ namespace DGSappSem2Final.Models
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Grade.Fee> Fees { get; set; }
 
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Student.StudentFees> StudentFees { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Assements.Assessment> Assessments { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.FileUpload.FileUpload> FileUploads { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Murals.ExtraMuralAgeGroups> ExtraMuralAgeGroups { get; set; }
     }
 }

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DGSappSem2Final.Models.FileUpload.FileUpload>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_ViewStart.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileUrl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileUrl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FileId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FileId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FileId })
+        </td>
+    </tr>
+}
+
+</table>

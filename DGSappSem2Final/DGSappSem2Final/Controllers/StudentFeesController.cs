@@ -18,8 +18,38 @@ namespace DGSappSem2Final.Controllers
         // GET: StudentFees
         public ActionResult Index()
         {
-            var studentFees = db.StudentFees.Include(s => s.Fee);
-            return View(studentFees.ToList());
+            var Students = db.Students.ToList();
+            var studentFees = db.StudentFees.ToList();
+            var gradeFees = db.Fees.ToList();
+            foreach (var s in Students)
+            {
+                var entryExists = studentFees.Any(x => x.StudentName == s.StudentName
+                && x.GradeName == s.StudentGrade);
+
+             
+                if (!entryExists)
+                {
+                    var fee = gradeFees.Where(x => x.GradeName == s.StudentGrade).Select(x => x.GradeFee).FirstOrDefault();
+
+                    db.StudentFees.Add(new StudentFees { 
+                    StudentName = s.StudentName,
+                    GradeName = s.StudentGrade,
+                    GradeFee = fee,
+                    FeeBalance = GetStudentFeeBalance(s.StID, s.StudentGrade)});
+                    db.SaveChanges();
+                }
+            }
+
+            return View(db.StudentFees.ToList());
+        }
+
+        private double GetStudentFeeBalance(int id, string gradeName)
+        {
+            StudentFees studentFees = db.StudentFees.Find(id);
+            var gradeFees = db.Fees.ToList();
+            var fee = gradeFees.Where(x => x.GradeName == gradeName).Select(x => x.GradeFee).FirstOrDefault();
+
+            return 0;
         }
 
         // GET: StudentFees/Details/5

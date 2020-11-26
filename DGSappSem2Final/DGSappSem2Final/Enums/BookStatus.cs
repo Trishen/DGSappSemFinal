@@ -9,6 +9,6 @@ namespace DGSappSem2Final.Enums
     {
         Available,
         Booked,
-        OverDue
+        Due
     }
 }

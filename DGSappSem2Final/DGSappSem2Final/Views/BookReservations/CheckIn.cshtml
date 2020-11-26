@@ -5,19 +5,13 @@
     ViewBag.Title = "CheckIn";
 }
 
-<h2>Book Return </h2>
+<h2>Book Returns</h2>
 
 @*<p>
         @Html.ActionLink("Check In A Book", "Edit")
     </p>*@
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Book.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Student.StudentName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.BookName)
         </th>
@@ -39,12 +33,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Book.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.StudentName)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BookName)
             </td>

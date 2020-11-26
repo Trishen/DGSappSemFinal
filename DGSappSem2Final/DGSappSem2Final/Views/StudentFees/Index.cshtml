@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/_ViewStart.cshtml";
 }
 
 <h2>Index</h2>
@@ -13,7 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Fee.GradeName)
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GradeName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GradeFee)
@@ -24,23 +26,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fee.GradeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GradeFee)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FeeBalance)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StudentFeeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StudentFeeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StudentFeeId })
-        </td>
-    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradeFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeeBalance)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.StudentFeeId })
+
+                @if (item.FeeBalance > 0)
+                {
+                    @Html.ActionLink(" | SMS Reminder", "SMSReminder", new { id = item.StudentFeeId })
+                    @Html.ActionLink(" | Email Reminder", "EmailReminder", new { id = item.StudentFeeId })
+                }
+            </td>
+        </tr>
 }
 
 </table>

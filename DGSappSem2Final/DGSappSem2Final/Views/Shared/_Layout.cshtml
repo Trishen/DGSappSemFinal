@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("DGS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 @*<ul class="nav navbar-nav">
@@ -75,18 +75,19 @@
                     <ul>@Html.ActionLink("Terms", "Index", "Terms")</ul>
                     <ul>@Html.ActionLink("Grades", "Index", "Grades")</ul>
                     <ul>@Html.ActionLink("Grade Fees", "Index", "Fees")</ul>
+                    <ul>@Html.ActionLink("Student Fees", "Index", "StudentFees")</ul>
                     <ul>@Html.ActionLink("Registration Classes", "Index", "Classes")</ul>
                     <ul>@Html.ActionLink("Subjects", "Index", "Subjects")</ul>
                     <ul>@Html.ActionLink("Grade Subjects", "Index", "GradeSubjects")</ul>
-                    <ul>@Html.ActionLink("Staff Subject Assignments", "Index", "StaffSubjects")</ul>
                     <ul>@Html.ActionLink("Extra Murals", "Index", "ExtraMurals")</ul>
+                    <ul>@Html.ActionLink("Extra Mural Teams", "Index", "ExtraMuralAgeGroups")</ul>
                 </div>
 
                 <button onclick="staff()" class="dropbtn">Staff Portal</button>
                 <div id="staffPortaldropdown" class="dropdown-content">
                     <ul>@Html.ActionLink("Staff Timetables", "Index", "StaffTimetables")</ul>
                     <ul>@Html.ActionLink("Staff Attendance", "Index", "StaffAttendances")</ul>
-                    <ul>@Html.ActionLink("Student Fees", "Index", "StudentFees")</ul>
+                    <ul>@Html.ActionLink("Staff Subject Assignments", "Index", "StaffSubjects")</ul>
                 </div>
 
                 <button onclick="student()" class="dropbtn">Student Portal</button>

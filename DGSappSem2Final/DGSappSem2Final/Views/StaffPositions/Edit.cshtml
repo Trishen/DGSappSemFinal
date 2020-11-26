@@ -26,7 +26,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.LimitedPosition, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-lg-offset-3">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.LimitedPosition)
                     @Html.ValidationMessageFor(model => model.LimitedPosition, "", new { @class = "text-danger" })

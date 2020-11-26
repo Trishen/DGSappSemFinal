@@ -1,5 +1,4 @@
 ﻿using DGSappSem2Final.Models.Grade;
-using DGSappSem2Final.Models.Subject;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +8,7 @@ using System.Web;
 
 namespace DGSappSem2Final.Models.Assements
 {
-    public class Assessment
+    public class Exam
     {
         //Property key
         [Key]
@@ -41,42 +40,30 @@ namespace DGSappSem2Final.Models.Assements
         //[Display(Name = "End Time:")]
         //public DateTime EndTime { get; set; }
 
-        //Subject
-        [ForeignKey("SubjectId")]
-        public virtual Subjects Subject { get; set; }
 
-        public int? SubjectId { get; set; }
-
-        [Display(Name = "Subject Name")]
-        public string SubjectName { get; set; }
-
+ 
         //Make string
-        [Display(Name = "Date of Birth"), DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required]
-        public DateTime AssessmentDate { get; set; } = DateTime.Now;
+        public DateTime ExamDate { get; set; }
 
 
-        //[Required(ErrorMessage = "Enter Test Venue")]
-        //[Display(Name = "Assessment Venue")]
-        //public string AssessmentVenue { get; set; }
+        [Required(ErrorMessage = "Enter Test Venue")]
+        [Display(Name = "Assessment Venue")]
+        public string ExamVenue { get; set; }
 
 
         [Required(ErrorMessage = "Select Term ")]
         public string Term { get; set; }
 
-
-        public bool HasUploadFiles { get; set; }
-
-
         //radiobutton (test,project,presentation,exam)
-        //[Required(ErrorMessage = "Enter Test Type")]
-        //[Display(Name = "Assessment Type ")]
-        //public string Type { get; set; }
+        [Required(ErrorMessage = "Enter Test Type")]
+        [Display(Name = "Assessment Type ")]
+        public string Type { get; set; }
 
         //collections
         //  public ICollection<SubjectReport> SubjectReports { get; set; }
 
-        public IEnumerable<string> GradeNameCollection { get; set; }
-        public IEnumerable<string> TermCollection { get; set; }
+
     }
 }

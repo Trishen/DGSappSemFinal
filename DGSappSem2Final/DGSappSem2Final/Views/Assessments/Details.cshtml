@@ -1,0 +1,56 @@
+﻿@model DGSappSem2Final.Models.Assements.Assessment
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Assessment</h4>
+        <hr />
+        <dl class="dl-horizontal">
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GradeName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GradeName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AssessmentDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AssessmentDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Term)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Term)
+            </dd>
+    
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>*@
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.AssessmentID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

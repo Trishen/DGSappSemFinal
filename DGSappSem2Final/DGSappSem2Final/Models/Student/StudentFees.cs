@@ -25,5 +25,29 @@ namespace DGSappSem2Final.Models.Student
 
         [Display(Name = "Outstanding Balance")]
         public double FeeBalance { get; set; }
+
+        //Grade
+        [ForeignKey("StudentId")]
+        public virtual Student Student { get; set; }
+
+        public int? StudentId { get; set; }
+
+        [Display(Name = "Student Name")]
+        public string StudentName { get; set; }
+
+        [Display(Name = "Guardian Name")]
+        public string GuardianName { get; set; }
+
+        [Display(Name = "Guardian Contact")]
+        public string GuardianContact { get; set; }
+
+        //Grade
+        [ForeignKey("GradeId")]
+        public virtual Grades Grade { get; set; }
+
+        public int? GradeId { get; set; }
+
+        [Display(Name = "Grade Name")]
+        public string GradeName { get; set; }
     }
 }

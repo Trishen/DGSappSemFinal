@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DGSappSem2Final.Models.Assements.Assessment>
+
+<h2>Assessments</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GradeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssessmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Term)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>*@
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssessmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Term)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.AssessmentID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.AssessmentID }) |
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.AssessmentID })*@
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

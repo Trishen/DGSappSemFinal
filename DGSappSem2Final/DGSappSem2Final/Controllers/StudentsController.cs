@@ -61,7 +61,7 @@ namespace DGSappSem2Final.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StID,StudentName,StudentSurname,StudentGender,StudentAddress,StudentTown,StudentContact,StudentGrade,StudentEmail,StudentBirthCertURL,Title,ParentName,ParentSurName,ParentContact,ParentEmail,StudentAllowReg,StaffId,AssignedTeacher,ClassId,ClassName")] Student student)
         {
-            var classes = db.Classes.ToList();
+            var classes = db.Classes.Where(x=> x.GradeName == student.StudentGrade).ToList();
             var classesToUse = new List<Classes>();
 
             var students = db.Students.ToList();

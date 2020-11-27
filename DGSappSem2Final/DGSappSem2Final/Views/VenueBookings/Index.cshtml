@@ -1,0 +1,96 @@
+﻿@model IEnumerable<DGSappSem2Final.Models.Events.VenueBooking>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Class.ClassName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade.GradeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venue.venueName)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.VenueName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassName)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.GradeName)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.RefNum)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.DateBookinFor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingReason)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Class.ClassName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade.GradeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venue.venueName)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.VenueId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassId)
+            </td>
+
+            @*<td>
+                @Html.DisplayFor(modelItem => item.RefNum)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.DateBookinFor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingReason)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.BookEventId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.BookEventId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.BookEventId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

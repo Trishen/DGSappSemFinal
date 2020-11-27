@@ -35,7 +35,7 @@ namespace DGSappSem2Final.Models.Events
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime eventEndTime { get; set; }
-        public ICollection<BookEvent> BookEvents { get; set; }
+        public ICollection<VenueBooking> BookEvents { get; set; }
 
         // ApplicationDbContext db = new ApplicationDbContext();
         //public bool CHeckTime()

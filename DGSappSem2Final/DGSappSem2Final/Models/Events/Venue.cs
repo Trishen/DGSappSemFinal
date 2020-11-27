@@ -16,10 +16,10 @@ namespace DGSappSem2Final.Models.Events
         [Display(Name = "Venue name")]
         public string venueName { get; set; }
 
-        [Required]
-        [Display(Name = "Location")]
+        //[Required]
+        //[Display(Name = "Location")]
 
-        public string Location { get; set; }
+        //public string Location { get; set; }
 
         //[Display(Name = "Event Price"), DataType(DataType.Currency)]
         //public decimal? price { get; set; }
@@ -27,7 +27,7 @@ namespace DGSappSem2Final.Models.Events
 
         [Required]
         [Display(Name = "Capacity")]
-        [Range(2, 1000)]
+        [Range(2, 2000)]
         public int capacity { get; set; }
 
         public Status Status { get; set; }

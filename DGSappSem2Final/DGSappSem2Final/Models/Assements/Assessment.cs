@@ -51,7 +51,7 @@ namespace DGSappSem2Final.Models.Assements
         public string SubjectName { get; set; }
 
         //Make string
-        [Display(Name = "Date of Birth"), DataType(DataType.Date)]
+        [Display(Name = "Assessment Date "), DataType(DataType.Date)]
         [Required]
         public DateTime AssessmentDate { get; set; } = DateTime.Now;
 

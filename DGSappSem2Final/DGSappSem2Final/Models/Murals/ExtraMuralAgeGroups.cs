@@ -15,7 +15,6 @@ namespace DGSappSem2Final.Models.Murals
         [Key]
         public int MuralAgeGroupId { get; set; }
 
-        public string MuralName { get; set; }
         [ForeignKey("ExtraMuralId")]
         public virtual ExtraMural ExtraMural { get; set; }
 

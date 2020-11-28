@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DGSappSem2Final.Models.Murals.ExtraMuralAgeGroups>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Extramural Teams </h2>
+
+<p>
+    @Html.ActionLink("Add A New Extramural Teams ", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtraMural.MuralName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Staff.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtraMuralName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgeGroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoAssignedStudents)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedTeacher)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExtraMural.MuralName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExtraMuralName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgeGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoAssignedStudents)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedTeacher)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MuralAgeGroupId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MuralAgeGroupId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MuralAgeGroupId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -57,12 +57,15 @@ namespace DGSappSem2Final.Controllers
             if (ModelState.IsValid)
             {
                 var getClassName = db.Classes.Find(venueBooking.ClassId);
-
-                var studentsToEmail = db.Students.Where(x => x.ClassName == getClassName.ClassName).ToList();
-                db.VenueBookings.Add(venueBooking);
-                db.SaveChanges();
                 var venue = db.Venues.Find(venueBooking.VenueId);
 
+                var studentsToEmail = db.Students.Where(x => x.ClassName == getClassName.ClassName).ToList();
+                venueBooking.VenueName = venue.venueName;
+                venueBooking.ClassName = getClassName.ClassName;
+
+                db.VenueBookings.Add(venueBooking);
+                db.SaveChanges();
+               
 
                 foreach (var s in studentsToEmail)
                 {

@@ -310,6 +310,7 @@
     <Compile Include="Controllers\BookReservationsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
+    <Compile Include="Controllers\ExtraMuralAgeGroups1Controller.cs" />
     <Compile Include="Controllers\ExtraMuralsController.cs" />
     <Compile Include="Controllers\FeesController.cs" />
     <Compile Include="Controllers\GradesController.cs" />
@@ -541,6 +542,11 @@
     <Content Include="Views\VenueBookings\Details.cshtml" />
     <Content Include="Views\VenueBookings\Edit.cshtml" />
     <Content Include="Views\VenueBookings\Index.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups1\Create.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups1\Delete.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups1\Details.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups1\Edit.cshtml" />
+    <Content Include="Views\ExtraMuralAgeGroups1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

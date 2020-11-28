@@ -13,33 +13,6 @@
         <h4>VenueBooking</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Class.ClassName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Class.ClassName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Grade.GradeName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Grade.GradeName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Venue.venueName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Venue.venueName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.VenueName)
-            </dt>
     
             <dd>
                 @Html.DisplayFor(model => model.VenueName)
@@ -60,15 +33,7 @@
             <dd>
                 @Html.DisplayFor(model => model.GradeName)
             </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.RefNum)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.RefNum)
-            </dd>
-    
+        
             <dt>
                 @Html.DisplayNameFor(model => model.DateBookinFor)
             </dt>
@@ -104,7 +69,7 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.BookEventId }) |
+        @Html.ActionLink("Reshedule", "Edit", new { id = Model.BookEventId }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
 </body>

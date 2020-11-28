@@ -61,16 +61,20 @@ namespace DGSappSem2Final.Controllers
                 var studentsToEmail = db.Students.Where(x => x.ClassName == getClassName.ClassName).ToList();
                 db.VenueBookings.Add(venueBooking);
                 db.SaveChanges();
+                var venue = db.Venues.Find(venueBooking.VenueId);
+
 
                 foreach (var s in studentsToEmail)
                 {
-                    var message =
-                        $@"Dear, {s.StudentName}
 
-Please note {venueBooking.VenueName} has been booked for the {venueBooking.DateBookinFor}
-during {venueBooking.StartTime} and {venueBooking.EndTime}.
+
+                    var message = $@"Dear {s.StudentName},
+
+Please note the { venue.venueName} has been booked for the { venueBooking.DateBookinFor.Date.ToString("dd-MM-yyyy")}. During { venueBooking.StartTime.TimeOfDay} and { venueBooking.EndTime.TimeOfDay}.
+For {venueBooking.BookingReason}.
 
 This is an automated message genarated by DGS.
+
 Thank you
 ";
 
@@ -98,8 +102,9 @@ Thank you
                 EnableSsl = true,
             };
 
-            var subject = className + " | Notification";
-            smtpClient.Send(email, email, "Booking", message);
+            var subject = className + " | Venue Booking Notification";
+
+            smtpClient.Send("dgstest2020@gmail.com", recipients: email, subject: subject, body: message );
         }
 
 

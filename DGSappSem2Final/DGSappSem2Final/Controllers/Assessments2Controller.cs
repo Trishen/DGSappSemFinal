@@ -155,16 +155,20 @@ namespace DGSappSem2Final.Controllers
         }
 
         [HttpPost]
-        public ActionResult Download(int id)
+        public ActionResult Download(int id, HttpPostedFileBase files)
         {
             Assessment assessment = db.Assessments.Find(id);
 
+            string testPath = files.FileName;
             string downloadsPath = KnownFolders.Downloads.Path;
 
-            using (Stream file = System.IO.File.OpenWrite($@"{downloadsPath}\{assessment.FileName}"))
-            {
-                file.Write(assessment.File, 0, assessment.File.Length);
-            }
+            //using (Stream file = System.IO.File.OpenWrite($@"{downloadsPath}\{assessment.FileName}"))
+            //{
+            //    file.Write(assessment.File, 0, assessment.File.Length);
+            //}
+
+            assessment.DownloadPath = downloadsPath;
+            db.SaveChanges();
 
             return RedirectToAction("Index");
         }

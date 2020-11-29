@@ -151,7 +151,7 @@ namespace DGSappSem2Final.Controllers
 
             foreach (var pos in positions)
             {
-                var limitReached = staffs.Count(x => x.StaffPositionName.Equals(pos.StaffPositionName)) == pos.Limit;
+                var limitReached = staffs.Count(x => x.StaffPositionId.Equals(pos.StaffPositionId)) == pos.Limit;
 
                 if (!pos.LimitedPosition)
                 {
@@ -175,7 +175,7 @@ namespace DGSappSem2Final.Controllers
             }
 
             staff.StaffPositionCollection = positionsCollection.Values.ToList();
-          
+                  
             return View(staff);
         }
 

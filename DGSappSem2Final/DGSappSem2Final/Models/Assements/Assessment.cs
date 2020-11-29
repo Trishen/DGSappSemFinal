@@ -21,5 +21,7 @@ namespace DGSappSem2Final.Models.Assements
         public string FileName { get; set; }
         public string FileType { get; set; }
         public byte[] File { get; set; }
+
+        public string DownloadPath { get; set; }
     }
 }

@@ -69,8 +69,12 @@ namespace DGSappSem2Final.Controllers
             ViewBag.SubjectId = new SelectList(db.GradeSubjects, "GradeSubjectId", "GradeName");
             ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title");
             ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName");
+            var staffSubjects = new StaffSubjects();
+            Dictionary<int, string> teacherCollection = GetTeacherNameComboCollection();
 
-            return View(new StaffSubjects());
+            staffSubjects.TeacherNameCollection = teacherCollection.Values.ToList();
+
+            return View(staffSubjects);
         }
 
         // POST: StaffSubjects/Create

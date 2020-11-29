@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.AssignedTeacher)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StaffSubjectId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StaffSubjectId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StaffSubjectId })
+            @Html.ActionLink("Add/Update Assigned Teacher", "Edit", new { id=item.StaffSubjectId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StaffSubjectId })
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.StaffSubjectId })*@
         </td>
     </tr>
 }

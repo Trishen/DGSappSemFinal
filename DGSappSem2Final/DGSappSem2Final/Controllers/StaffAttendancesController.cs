@@ -39,14 +39,13 @@ namespace DGSappSem2Final.Controllers
         // GET: StaffAttendances/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new StaffAttendance());
         }
 
         // POST: StaffAttendances/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StaffAttendanceId,StaffAttName,Staffrecord,GetDate")] StaffAttendance staffAttendance)
         {
             if (ModelState.IsValid)

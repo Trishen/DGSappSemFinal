@@ -60,15 +60,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("DGS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("DGHS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div>
                 <div class="navbar-collapse collapse">
-                    @*<ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>*@
+                    <ul class="nav navbar-nav">
+                        @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+
+                    </ul>
 
                     <button onclick="admin()" class="dropbtn">Admin Portal</button>
                     <div id="adminPortaldropdown" class="dropdown-content">
@@ -85,8 +84,8 @@
                         <ul>@Html.ActionLink("Extra Mural Teams", "Index", "ExtraMuralAgeGroups1")</ul>
                         <ul>@Html.ActionLink("Venues", "Index", "Venues")</ul>
                     </div>
-                
-                
+
+
                     <button onclick="staff()" class="dropbtn">Staff Portal</button>
                     <div id="staffPortaldropdown" class="dropdown-content">
                         <ul>@Html.ActionLink("Staff Timetables", "Index", "StaffTimetables")</ul>
@@ -95,14 +94,14 @@
                         <ul>@Html.ActionLink("Assessments", "Index", "Assessments2")</ul>
                         <ul>@Html.ActionLink("Venue Bookings", "Index", "VenueBookings")</ul>
                     </div>
-                
-                
+
+
                     <button onclick="student()" class="dropbtn">Student Portal</button>
                     <div id="studentPortaldropdown" class="dropdown-content">
                         <ul>@Html.ActionLink("Students", "Index", "Students")</ul>
                     </div>
-               
-                
+
+
                     <button onclick="library()" class="dropbtn">Library Portal</button>
                     <div id="libraryPortaldropdown" class="dropdown-content">
                         <ul>@Html.ActionLink("Library", "Index", "Books")</ul>
@@ -110,9 +109,14 @@
                         <!--<ul>-->@*@Html.ActionLink("Book Return", "CheckIn", "BookReservations")*@<!--</ul>-->
                     </div>
 
-            
-                            @Html.Partial("_LoginPartial")
-                        </div></div>
+                    @Html.ActionLink("About", "About", "Home", new { @class = "dropbtn" })
+
+                   
+               @Html.ActionLink("Contact", "Contact", "Home", new { @class = "dropbtn" })
+    
+
+                    @Html.Partial("_LoginPartial")
+                </div></div>
             </div>
     </div>
     <div class="container body-content">

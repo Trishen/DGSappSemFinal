@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/dgsappsem2finaldbserver/databases/DGSappSem2Final_db",
+      "type": "mssql.azure",
+      "connectionId": "dgsFinalconnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

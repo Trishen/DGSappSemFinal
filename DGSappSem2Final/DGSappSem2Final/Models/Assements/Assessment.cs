@@ -17,5 +17,9 @@ namespace DGSappSem2Final.Models.Assements
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int AssessmentID { get; set; }
         public int AssessmentName { get; set; }
+
+        public string FileName { get; set; }
+        public string FileType { get; set; }
+        public byte[] File { get; set; }
     }
 }

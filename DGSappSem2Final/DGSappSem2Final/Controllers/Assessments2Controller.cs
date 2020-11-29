@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using DGSappSem2Final.Models;
 using DGSappSem2Final.Models.Assements;
+using Microsoft.WindowsAPICodePack.Shell;
 
 namespace DGSappSem2Final.Controllers
 {
@@ -48,16 +49,29 @@ namespace DGSappSem2Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AssessmentID,AssessmentName")] Assessment assessment)
+        public ActionResult Create([Bind(Include = "AssessmentID,AssessmentName")] Assessment assessment, HttpPostedFileBase files)
         {
+            assessment.FileName = files.FileName;
+            assessment.FileType = files.ContentType;
+
+            using (Stream inputStream = files.InputStream)
+            {
+                MemoryStream memoryStream = inputStream as MemoryStream;
+                if (memoryStream == null)
+                {
+                    memoryStream = new MemoryStream();
+                    inputStream.CopyTo(memoryStream);
+                }
+                assessment.File = memoryStream.ToArray();
+            }
+
             if (ModelState.IsValid)
             {
                 db.Assessments.Add(assessment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
-            return View(assessment);
+            return RedirectToAction("Index");
         }
 
         // GET: Assessments2/Edit/5
@@ -80,7 +94,7 @@ namespace DGSappSem2Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AssessmentID,AssessmentName")] Assessment assessment)
+        public ActionResult Edit([Bind(Include = "AssessmentID,AssessmentName")] Assessment assessment, HttpPostedFileBase files)
         {
             if (ModelState.IsValid)
             {
@@ -126,19 +140,32 @@ namespace DGSappSem2Final.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase files)
+        public ActionResult Download(int? id)
         {
-            // Verify that the user selected a file
-            if (files != null && files.ContentLength > 0)
+            if (id == null)
             {
-                // extract only the filename
-                var fileName = Path.GetFileName(files.FileName);
-                // store the file inside ~/App_Data/uploads folder
-                var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
-                files.SaveAs(path);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            // redirect back to the index action to show the form once again
+            Assessment assessment = db.Assessments.Find(id);
+            if (assessment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(assessment);
+        }
+
+        [HttpPost]
+        public ActionResult Download(int id)
+        {
+            Assessment assessment = db.Assessments.Find(id);
+
+            string downloadsPath = KnownFolders.Downloads.Path;
+
+            using (Stream file = System.IO.File.OpenWrite($@"{downloadsPath}\{assessment.FileName}"))
+            {
+                file.Write(assessment.File, 0, assessment.File.Length);
+            }
+
             return RedirectToAction("Index");
         }
     }

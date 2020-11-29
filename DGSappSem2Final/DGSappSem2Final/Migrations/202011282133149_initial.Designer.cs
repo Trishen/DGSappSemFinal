@@ -13,7 +13,7 @@ namespace DGSappSem2Final.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202011211848500_initial"; }
+            get { return "202011282133149_initial"; }
         }
         
         string IMigrationMetadata.Source

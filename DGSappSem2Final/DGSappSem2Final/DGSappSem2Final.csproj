@@ -306,7 +306,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AssessmentsController.cs" />
     <Compile Include="Controllers\BookReservationsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
@@ -336,12 +335,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011211848500_initial.cs" />
-    <Compile Include="Migrations\202011211848500_initial.Designer.cs">
-      <DependentUpon>202011211848500_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202011282133149_initial.cs" />
+    <Compile Include="Migrations\202011282133149_initial.Designer.cs">
+      <DependentUpon>202011282133149_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Assements\AssessmentOLD.cs" />
     <Compile Include="Models\Assements\Exam.cs" />
     <Compile Include="Models\Assements\Assessment.cs" />
     <Compile Include="Models\Classes\Classes.cs" />
@@ -527,11 +527,6 @@
     <Content Include="Views\StudentFees\Edit.cshtml" />
     <Content Include="Views\StudentFees\Index.cshtml" />
     <Content Include="Views\BookReservations\CheckIn.cshtml" />
-    <Content Include="Views\Assessments\Create.cshtml" />
-    <Content Include="Views\Assessments\Delete.cshtml" />
-    <Content Include="Views\Assessments\Details.cshtml" />
-    <Content Include="Views\Assessments\Edit.cshtml" />
-    <Content Include="Views\Assessments\Index.cshtml" />
     <Content Include="Views\Venues\Create.cshtml" />
     <Content Include="Views\Venues\Delete.cshtml" />
     <Content Include="Views\Venues\Details.cshtml" />
@@ -565,8 +560,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011211848500_initial.resx">
-      <DependentUpon>202011211848500_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011282133149_initial.resx">
+      <DependentUpon>202011282133149_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

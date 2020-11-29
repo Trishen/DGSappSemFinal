@@ -20,7 +20,7 @@ namespace DGSappSem2Final.Models.FileUpload
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity), Key()]
         public string FileId { get; set; }
         public string FileName { get; set; }
-        public string FileUrl { get; set; }
+        public byte[] File { get; set; }
         public List<FileUpload> FileList { get; set; }
     }
 

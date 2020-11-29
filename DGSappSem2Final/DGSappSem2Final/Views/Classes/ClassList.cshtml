@@ -1,69 +1,59 @@
-﻿@model IEnumerable<DGSappSem2Final.Models.Classes.Classes>
+﻿@model IEnumerable<DGSappSem2Final.Models.Student.Student>
 <h2>Class List </h2>
-<p>
-    @Html.ActionLink("Create A New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Grade.GradeName)
+            @Html.DisplayNameFor(model => model.StudentName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Staff.Title)
+            @Html.DisplayNameFor(model => model.StudentSurname)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClassName)
+            @Html.DisplayNameFor(model => model.StudentGender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GradeName)
+            @Html.DisplayNameFor(model => model.StudentAddress)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaxNoOfClasses)
+            @Html.DisplayNameFor(model => model.StudentContact)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaxNoOfStudentsPerClass)
+            @Html.DisplayNameFor(model => model.StudentEmail)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NoOfAssignedStudents)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssignedTeacher)
+            @Html.DisplayNameFor(model => model.StudentBirthCertURL)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grade.GradeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Staff.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClassName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GradeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxNoOfClasses)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxNoOfStudentsPerClass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoOfAssignedStudents)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssignedTeacher)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClassId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClassId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClassId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentBirthCertURL)
+            </td>
+
+        </tr>
+    }
+
 
 </table>
+@Html.ActionLink("Back to List", "Index")

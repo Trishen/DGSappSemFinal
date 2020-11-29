@@ -30,12 +30,8 @@ namespace DGSappSem2Final.Models.Student
         [Display(Name = "Address")]
         public string StudentAddress { get; set; }
 
-        [Required(ErrorMessage = "Enter your town")]
-        [Display(Name = "Town")]
-        public string StudentTown { get; set; }
-
         [Required(ErrorMessage = "Enter contact number"), DataType(DataType.PhoneNumber)]
-        [Display(Name = "Student contact number")]
+        [Display(Name = "Student Contact Number")]
         [Phone]
         public string StudentContact { get; set; }
 

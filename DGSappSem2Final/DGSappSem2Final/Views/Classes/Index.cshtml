@@ -58,11 +58,11 @@
 
             @if (item.NoOfAssignedStudents == 0)
             {
-                @Html.ActionLink("Delete", "Delete", new { id = item.GradeId })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ClassId })
             }
             else
             {
-                @Html.ActionLink("View Class List", "ViewClassList", new { id = item.ClassId })
+                @Html.ActionLink("View Class List", "ClassList", new { id = item.ClassId })
             }
         </td>
     </tr>

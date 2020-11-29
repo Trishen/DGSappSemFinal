@@ -59,7 +59,7 @@ namespace DGSappSem2Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StID,StudentName,StudentSurname,StudentGender,StudentAddress,StudentTown,StudentContact,StudentGrade,StudentEmail,StudentBirthCertURL,Title,ParentName,ParentSurName,ParentContact,ParentEmail,StudentAllowReg,StaffId,AssignedTeacher,ClassId,ClassName")] Student student)
+        public ActionResult Create([Bind(Include = "StID,StudentName,StudentSurname,StudentGender,StudentAddress,StudentContact,StudentGrade,StudentEmail,StudentBirthCertURL,Title,ParentName,ParentSurName,ParentContact,ParentEmail,StudentAllowReg,StaffId,AssignedTeacher,ClassId,ClassName")] Student student)
         {
             var classes = db.Classes.Where(x=> x.GradeName == student.StudentGrade).ToList();
             var classesToUse = new List<Classes>();
@@ -117,7 +117,7 @@ namespace DGSappSem2Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StID,StudentName,StudentSurname,StudentGender,StudentAddress,StudentTown,StudentContact,StudentGrade,StudentEmail,StudentBirthCertURL,Title,ParentName,ParentSurName,ParentContact,ParentEmail,StudentAllowReg,StaffId,AssignedTeacher,ClassId,ClassName")] Student student)
+        public ActionResult Edit([Bind(Include = "StID,StudentName,StudentSurname,StudentGender,StudentAddress,StudentContact,StudentGrade,StudentEmail,StudentBirthCertURL,Title,ParentName,ParentSurName,ParentContact,ParentEmail,StudentAllowReg,StaffId,AssignedTeacher,ClassId,ClassName")] Student student)
         {
             if (ModelState.IsValid)
             {

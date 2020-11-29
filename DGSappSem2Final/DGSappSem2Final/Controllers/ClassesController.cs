@@ -29,10 +29,12 @@ namespace DGSappSem2Final.Controllers
             return View(classes.ToList());
         } 
         
-        public ActionResult ClassList()
+        public ActionResult ClassList(int id)
         {
-            var classes = db.Classes.Include(c => c.Grade).Include(c => c.Staff);
-            return View(classes.ToList());
+            var className = db.Classes.Find(id).ClassName;
+            var students = db.Students.Where(c => c.ClassName == className).ToList();
+
+            return View(students);
         }
 
         // GET: Classes/Details/5
@@ -164,7 +166,7 @@ namespace DGSappSem2Final.Controllers
             classes.TeacherNameCollection = teacherCollection.Values.ToList();
 
             classes.GradeId = FindFirstKeyByValue(gradeCollection, classes.GradeName);
-            classes.MaxNoOfClasses = db.Grades.Find(classes.GradeId).MaxNoOfClasses;
+            //classes.MaxNoOfClasses = db.Grades.Find(classes.GradeId).MaxNoOfClasses;
             classes.StaffId = FindFirstKeyByValue(teacherCollection, classes.AssignedTeacher);
 
             if (classes == null)

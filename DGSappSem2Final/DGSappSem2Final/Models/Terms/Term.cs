@@ -18,5 +18,10 @@ namespace DGSappSem2Final.Models.Terms
         [Display(Name = "Term")]
         [CustomTermNameValidator]
         public string TermName { get; set; }
+        
+        [Display(Name = "Period Start Month")]
+        public string StartDate { get; set; }
+        [Display(Name = "Period End Month")]
+        public string EndDate { get; set; }
     }
 }

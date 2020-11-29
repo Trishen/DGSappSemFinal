@@ -4,43 +4,22 @@
     ViewBag.Title = "Create Staff Member";
 }
 
-<h2>QR Code</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <body>
-
-        <h4>Create user QR Card</h4>
+    @*<h4>Create user QR Card</h4>
         <div class="w3-container w3-center">
             <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;" height="70px" , width="70px"></p>
             <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-        </div>
-        <div class="card">
-            <img id="output" style="width:100%">
-            <h1>@ViewBag.Name</h1>
-            <p class="title">Teacher of Durban Girls Secondary School</p>
+        </div>*@
+    <h1>@ViewBag.Name</h1>
+    <p class="title">Teacher of Durban Girls Secondary School</p>
 
-            @using (Html.BeginForm("QRCode", "Staffs", FormMethod.Post))
-
-            {
-                <div class="col-md-3">
-
-                    <img src="@ViewBag.Url" width="130px" height="130px" alt="Image" />
-
-                </div>
-                <p><button>@ViewBag.Con</button></p>
-                <input type="submit" id="btnGenerate" value="Generate" class="btn btn-default" />
-
-            }
-
-        </div>
-        @*<div class="w3-container w3-center">
-                @Html.ActionLink("Print QR Card", "Print")
-            </div>*@
-    </body>
+    <div>
+        <img id="output" style="width:100%">
+            <img src="@ViewBag.Url" width="250px" height="250px" alt="Image" />
+    </div>
 }
 
 <script>
@@ -52,12 +31,10 @@
     };
 </script>
 
-<div>
-    @Html.ActionLink("Print QR Card", "Print")
-</div>
-<div>
-    @Html.ActionLink("Back to List", "Index")
 
+<div>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Print QR Card", "Print")
 </div>
 
 @section Scripts {

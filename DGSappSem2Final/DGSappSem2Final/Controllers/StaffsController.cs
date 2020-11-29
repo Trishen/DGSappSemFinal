@@ -21,6 +21,16 @@ namespace DGSappSem2Final.Controllers
         // GET: Staffs
         public ActionResult Index()
         {
+            var bug = db.Staffs.Where(x=> x.StaffPositionId!=null).ToList();
+
+            foreach(var t in bug)
+            {
+                t.StaffPositionId = null;
+                db.SaveChanges();
+            }
+
+
+
             var staffs = db.Staffs.Include(s => s.Grade);
             return View(staffs.ToList());
         }
@@ -135,6 +145,25 @@ namespace DGSappSem2Final.Controllers
         // GET: Staffs/Edit/5
         public ActionResult Edit(int? id)
         {
+            var staffs = db.Staffs.ToList();
+            var positions = db.StaffPositions.ToList();
+            var positionsCollection = new Dictionary<int, string>();
+
+            foreach (var pos in positions)
+            {
+                var limitReached = staffs.Count(x => x.StaffPositionName.Equals(pos.StaffPositionName)) == pos.Limit;
+
+                if (!pos.LimitedPosition)
+                {
+                    positionsCollection.Add(pos.StaffPositionId, pos.StaffPositionName);
+                }
+
+                if (pos.LimitedPosition && !limitReached)
+                {
+                    positionsCollection.Add(pos.StaffPositionId, pos.StaffPositionName);
+                }
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -144,7 +173,9 @@ namespace DGSappSem2Final.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StaffPositionId = new SelectList(db.StaffPositions, "StaffPositionId", "StaffPositionName", staff.StaffPositionId);
+
+            staff.StaffPositionCollection = positionsCollection.Values.ToList();
+          
             return View(staff);
         }
 
@@ -155,13 +186,14 @@ namespace DGSappSem2Final.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StaffId,Title,Name,Surname,Gender,DateOfBirth,Email,PhoneNo,Address,PostalCode,StaffPositionId,StaffPositionName")] Staff staff)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(staff).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StaffPositionId = new SelectList(db.StaffPositions, "StaffPositionId", "StaffPositionName", staff.StaffPositionId);
+            //ViewBag.StaffPositionId = new SelectList(db.StaffPositions, "StaffPositionId", "StaffPositionName", staff.StaffPositionId);
             return View(staff);
         }
 

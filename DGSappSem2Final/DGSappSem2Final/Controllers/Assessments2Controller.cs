@@ -165,7 +165,7 @@ namespace DGSappSem2Final.Controllers
             //    file.Write(assessment.File, 0, assessment.File.Length);
             //}
 
-            assessment.DownloadPath = downloadsPath;
+            //assessment.DownloadPath = downloadsPath;
             db.SaveChanges();
 
             return RedirectToAction("Index");

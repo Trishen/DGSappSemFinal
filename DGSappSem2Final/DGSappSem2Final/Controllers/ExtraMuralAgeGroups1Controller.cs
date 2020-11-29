@@ -42,7 +42,7 @@ namespace DGSappSem2Final.Controllers
         {
             ViewBag.ExtraMuralId = new SelectList(db.ExtraMurals, "MuralId", "MuralName");
             ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title");
-            return View();
+            return View(new ExtraMuralAgeGroups());
         }
 
         // POST: ExtraMuralAgeGroups1/Create

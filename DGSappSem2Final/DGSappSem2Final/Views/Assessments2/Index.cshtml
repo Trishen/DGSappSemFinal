@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Assessment</h2>
+<h2>Assessments</h2>
 
 <p>
     @Html.ActionLink("Add a New Assessment", "Create")
@@ -26,7 +26,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.AssessmentID }) |
             @Html.ActionLink("Details", "Details", new { id=item.AssessmentID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.AssessmentID })
-            @Html.ActionLink("Download", "Download", new { id=item.AssessmentID })
+            @*@Html.ActionLink("Download", "Download", new { id=item.AssessmentID })*@
         </td>
     </tr>
 }

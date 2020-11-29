@@ -39,6 +39,7 @@ namespace DGSappSem2Final.Models.Library
         public DateTime ReturnDate { get; set; }
 
         public string Status { get; set; }
+        [Display(Name = "Message")]
         public string SMSMessage { get; set; }
 
         public IEnumerable<string> BookNameCollection { get; set; }

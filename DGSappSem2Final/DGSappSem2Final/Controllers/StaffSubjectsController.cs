@@ -26,14 +26,16 @@ namespace DGSappSem2Final.Controllers
                 var grade = db.Grades.Find(gsub.GradeId);
 
                 var entryExists = db.StaffSubjects.Any(x => x.GradeName == grade.GradeName && x.SubjectName == subject.SubjectName);
-                        
+
                 if (!entryExists)
                 {
-                    db.StaffSubjects.Add(new StaffSubjects { 
+                    db.StaffSubjects.Add(new StaffSubjects
+                    {
                         //StaffSubjectId = GetMaxStaffSubjectId() + 1,
-                    SubjectName = subject.SubjectName,
-                    GradeName = grade.GradeName,
-                    });;
+                        SubjectName = subject.SubjectName,
+                        GradeName = grade.GradeName,
+                        TeacherNameCollection = new List<string>()
+                    }); ;
 
                     db.SaveChanges();
                 }
@@ -43,7 +45,7 @@ namespace DGSappSem2Final.Controllers
             return View(stsub);
         }
 
-        private  int GetMaxStaffSubjectId()
+        private int GetMaxStaffSubjectId()
         {
             return db.StaffSubjects.Max(x => x.StaffSubjectId);
         }
@@ -165,16 +167,14 @@ namespace DGSappSem2Final.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StaffSubjectId,GradeSubjectId,GradeName,SubjectId,SubjectName,StaffId,AssignedTeacher")] StaffSubjects staffSubjects)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(staffSubjects).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            Dictionary<int, string> teacherCollection = GetTeacherNameComboCollection();
+            db.Entry(staffSubjects).State = EntityState.Modified;
+            db.SaveChanges();
+
             ViewBag.SubjectId = new SelectList(db.GradeSubjects, "GradeSubjectId", "GradeName", staffSubjects.SubjectId);
             ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title", staffSubjects.StaffId);
             ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName", staffSubjects.SubjectId);
-            return View(staffSubjects);
+            return RedirectToAction("Index");
         }
 
         // GET: StaffSubjects/Delete/5

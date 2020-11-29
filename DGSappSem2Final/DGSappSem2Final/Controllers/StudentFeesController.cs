@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DGSappSem2Final.Models;
 using DGSappSem2Final.Models.Student;
+using Nexmo.Api;
 
 namespace DGSappSem2Final.Controllers
 {
@@ -20,24 +21,29 @@ namespace DGSappSem2Final.Controllers
         {
             var students = db.Students.ToList();
             var studentFees = db.StudentFees.ToList();
-            foreach(var student in students)
+            foreach (var student in students)
             {
-                //var grade = student.StudentGrade;
+                var fee = db.Fees.Where(x => x.GradeName == student.StudentGrade).FirstOrDefault().GradeFee;
 
-
-                ////if(student.FeeBalance != 0)
-                ////{
-                //    db.StudentFees.Add(new StudentFees
-                //    {
-                //        StudentName = student.StudentName,
-                //        GuardianName = student.ParentName,
-                //        GuardianContact = student.ParentContact,
-                //        //GradeName = student.GradeName,
-                //        //GradeFee = student.GradeFee,
-                //        //FeeBalance = student.FeeBalance
-                //    });
-                //}
+                if (!studentFees.Any(x => x.StudentName == student.StudentName
+                 && x.GuardianName == student.ParentName
+                 && x.GuardianContact == student.ParentContact
+                 && x.GradeName == student.StudentGrade
+                 && x.GradeFee == fee))
+                {
+                    db.StudentFees.Add(new StudentFees
+                    {
+                        StudentName = student.StudentName,
+                        GuardianName = student.ParentName,
+                        GuardianContact = student.ParentContact,
+                        GradeName = student.StudentGrade,
+                        GradeFee = fee,
+                        FeeBalance = fee
+                    });
+                }
+                db.SaveChanges();
             }
+
             return View(db.StudentFees.ToList());
         }
 
@@ -61,6 +67,43 @@ namespace DGSappSem2Final.Controllers
         {
             ViewBag.FeeId = new SelectList(db.Fees, "FeeId", "GradeName");
             return View();
+        }
+
+        public ActionResult SMSReminder(int? id)
+        {
+            var message = string.Empty;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            StudentFees studentFees = db.StudentFees.Find(id);
+
+            message = "Hi, " + studentFees.GuardianName + "\n\nPlease note outstanding Fees Balance Of: " + studentFees.FeeBalance + " is over due.\nPlease pay as soon as possible.";
+            studentFees.SMSMessage = message;
+
+            return View(studentFees);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SMSReminder([Bind(Include = "StudentFeeId,FeeId,GradeFee,FeeBalance,SMSMessage")] StudentFees studentFees)
+        {
+
+            var client = new Client(creds: new Nexmo.Api.Request.Credentials
+            {
+                ApiKey = "7692f400",
+                ApiSecret = "Zua8eJBJEcveP0Zn"
+            });
+            var results = client.SMS.Send(request: new SMS.SMSRequest
+            {
+                from = "DGS",
+                to = "27817375820",
+                //update to include book information 
+
+                text = studentFees.SMSMessage
+            });
+
+            return View(studentFees);
         }
 
         // POST: StudentFees/Create

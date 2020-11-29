@@ -562,6 +562,7 @@
     <Content Include="Views\Assessments2\Edit.cshtml" />
     <Content Include="Views\Assessments2\Index.cshtml" />
     <Content Include="Views\Assessments2\Download.cshtml" />
+    <Content Include="Views\StudentFees\SMSReminder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

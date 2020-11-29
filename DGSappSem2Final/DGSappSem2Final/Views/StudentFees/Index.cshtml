@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Student Fees</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         @*<th>
@@ -47,9 +44,11 @@
         @Html.DisplayFor(modelItem => item.FeeBalance)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.StudentFeeId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.StudentFeeId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.StudentFeeId })
+        @Html.ActionLink("Details", "Details", new { id = item.StudentFeeId })
+        @if (item.FeeBalance > 0)
+        {
+            @Html.ActionLink("| SMS Reminder", "SMSReminder", new { id = item.StudentFeeId })
+        }
     </td>
 </tr>
 }

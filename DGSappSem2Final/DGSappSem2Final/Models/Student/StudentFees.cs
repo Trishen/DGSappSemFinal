@@ -49,5 +49,7 @@ namespace DGSappSem2Final.Models.Student
 
         [Display(Name = "Grade Name")]
         public string GradeName { get; set; }
+        [Display(Name = "Message")]
+        public string SMSMessage { get; set; }
     }
 }

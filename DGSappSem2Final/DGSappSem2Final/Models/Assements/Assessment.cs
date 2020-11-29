@@ -16,8 +16,21 @@ namespace DGSappSem2Final.Models.Assements
         [Key]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int AssessmentID { get; set; }
+
+        [Display(Name = "Assessment Name")]
         public int AssessmentName { get; set; }
 
+        //Grade
+        [ForeignKey("GradeId")]
+        public virtual Grades Grade { get; set; }
+
+        public int? GradeId { get; set; }
+
+        [Display(Name = "Grade Name")]
+        [Required]
+        public string GradeName { get; set; }
+
+        [Display(Name = "Max No. Of Classes")]
         public string FileName { get; set; }
         public string FileType { get; set; }
         public byte[] File { get; set; }

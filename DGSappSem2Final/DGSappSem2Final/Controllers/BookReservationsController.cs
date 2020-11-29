@@ -99,13 +99,6 @@ namespace DGSappSem2Final.Controllers
 
                 text = bookReservation.SMSMessage
             });
-
-            if (ModelState.IsValid)
-            {
-                db.Entry(bookReservation).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             return View(bookReservation);
         }
 

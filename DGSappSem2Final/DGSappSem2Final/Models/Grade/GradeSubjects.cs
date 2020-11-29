@@ -9,6 +9,7 @@ using System.Web;
 
 namespace DGSappSem2Final.Models.Grade
 {
+    [CustomGradeSubjectValidator]
     public class GradeSubjects
     {
         [Key]
@@ -26,6 +27,7 @@ namespace DGSappSem2Final.Models.Grade
 
         //Subject
         [ForeignKey("SubjectId")]
+
         public virtual Subjects Subject { get; set; }
 
         public int? SubjectId { get; set; }

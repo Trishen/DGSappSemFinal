@@ -24,6 +24,8 @@ namespace DGSappSem2Final.Models.Library
         //[Display(Name = "Picture")]
         //public byte[] Picture { get; set; }
         public string Author { get; set; }
+        
+        [DisplayName("Number Of Pages")]
         public int Numpages { get; set; }
         public string Status { get; set; }
 

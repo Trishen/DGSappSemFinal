@@ -94,8 +94,6 @@ namespace DGSappSem2Final.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "GradeSubjectId,GradeId,GradeName,SubjectId,NoOfLessonsRequired")] GradeSubjects gradeSubjects)
         {
-            //gradeSubjects.GradeName = db.Grades.Find(gradeSubjects.GradeId).GradeName;
-            //gradeSubjects.SubjectName = db.Subjects.Find(gradeSubjects.SubjectId).SubjectName;
 
             if (ModelState.IsValid)
             {

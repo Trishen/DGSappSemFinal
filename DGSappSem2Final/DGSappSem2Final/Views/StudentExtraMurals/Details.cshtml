@@ -1,0 +1,41 @@
+﻿@model DGSappSem2Final.Models.Murals.StudentExtraMural
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details For Student Extramural</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraMural.MuralName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraMural.MuralName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraMuralAgeGroup.ExtraMuralName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraMuralAgeGroup.ExtraMuralName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentMuralId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

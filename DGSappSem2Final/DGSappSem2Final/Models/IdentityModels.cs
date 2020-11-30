@@ -73,5 +73,7 @@ namespace DGSappSem2Final.Models
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Murals.ExtraMuralAgeGroups> ExtraMuralAgeGroups { get; set; }
 
         public System.Data.Entity.DbSet<DGSappSem2Final.Models.Assements.StudentAssessment> StudentAssessments { get; set; }
+
+        public System.Data.Entity.DbSet<DGSappSem2Final.Models.Murals.StudentExtraMural> StudentExtraMurals { get; set; }
     }
 }

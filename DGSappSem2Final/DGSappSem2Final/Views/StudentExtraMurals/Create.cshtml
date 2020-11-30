@@ -1,0 +1,50 @@
+﻿@model DGSappSem2Final.Models.Murals.StudentExtraMural
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Join A Mural</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentId, "StudentId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("StudentId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MuralAgeGroupId, "MuralAgeGroupId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MuralAgeGroupId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.MuralAgeGroupId, new SelectList(Enum.GetValues(typeof(DGSappSem2Final.Enums.AgeGroups))))
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MuralId, "MuralId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MuralId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MuralId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

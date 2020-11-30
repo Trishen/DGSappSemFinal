@@ -333,6 +333,7 @@
     <Compile Include="Controllers\StaffSubjectsController.cs" />
     <Compile Include="Controllers\StaffTimetablesController.cs" />
     <Compile Include="Controllers\StudentAssessmentsController.cs" />
+    <Compile Include="Controllers\StudentExtraMuralsController.cs" />
     <Compile Include="Controllers\StudentFeesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
@@ -570,6 +571,11 @@
     <Content Include="Views\StudentAssessments\Details.cshtml" />
     <Content Include="Views\StudentAssessments\Edit.cshtml" />
     <Content Include="Views\StudentAssessments\Index.cshtml" />
+    <Content Include="Views\StudentExtraMurals\Create.cshtml" />
+    <Content Include="Views\StudentExtraMurals\Delete.cshtml" />
+    <Content Include="Views\StudentExtraMurals\Details.cshtml" />
+    <Content Include="Views\StudentExtraMurals\Edit.cshtml" />
+    <Content Include="Views\StudentExtraMurals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

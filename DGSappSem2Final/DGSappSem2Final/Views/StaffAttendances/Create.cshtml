@@ -63,12 +63,14 @@
                     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
                     <div class="w3-container w3-center">
                         <label class="radio-inline">
-                            <strong> Clock In&nbsp;&nbsp;</strong>@Html.RadioButtonFor(type => type.Staffrecord, "Clock In")
+                            <strong> Clock In&nbsp;&nbsp;</strong><br />@Html.RadioButtonFor(type => type.Staffrecord, "Clock In")
                         </label>
                         <label class="radio-inline">
-                            <strong> Clock Out&nbsp;&nbsp;</strong> @Html.RadioButtonFor(type => type.Staffrecord, "Clock Out")
+                            <strong> Clock Out&nbsp;&nbsp;</strong> <br /> @Html.RadioButtonFor(type => type.Staffrecord, "Clock Out")
                         </label>
                     </div>
+                    <br />
+                    <hr />
                     <div class="col-sm-12">
                         <video id="preview" class="p-1 border" style="width:100%;"></video>
                     </div>

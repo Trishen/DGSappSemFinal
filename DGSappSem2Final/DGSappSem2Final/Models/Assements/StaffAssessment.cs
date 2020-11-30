@@ -1,5 +1,6 @@
 ﻿using DGSappSem2Final.Models.Grade;
 using DGSappSem2Final.Models.Subject;
+using DGSappSem2Final.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,14 +12,15 @@ using System.Web;
 
 namespace DGSappSem2Final.Models.Assements
 {
-    public class Assessment
+    public class StaffAssessment
     {
         [Key]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int AssessmentID { get; set; }
 
+        [CustomAssessmentNameValidator]
         [Display(Name = "Assessment Name")]
-        public int AssessmentName { get; set; }
+        public string AssessmentName { get; set; }
 
         //Grade
         [ForeignKey("GradeId")]
@@ -27,10 +29,10 @@ namespace DGSappSem2Final.Models.Assements
         public int? GradeId { get; set; }
 
         [Display(Name = "Grade Name")]
-        [Required]
+       
         public string GradeName { get; set; }
 
-        [Display(Name = "Max No. Of Classes")]
+        [Display(Name = "File Name")]
         public string FileName { get; set; }
         public string FileType { get; set; }
         public byte[] File { get; set; }

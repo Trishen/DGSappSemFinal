@@ -40,9 +40,37 @@ namespace DGSappSem2Final.Controllers
         // GET: ExtraMuralAgeGroups1/Create
         public ActionResult Create()
         {
+            Dictionary<int, string> teacherCollection = GetTeacherNameComboCollection();
+
+            var mural = new ExtraMuralAgeGroups
+            {
+                TeacherNameCollection = teacherCollection.Values.ToList()
+            };
+
+
             ViewBag.ExtraMuralId = new SelectList(db.ExtraMurals, "MuralId", "MuralName");
             ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title");
-            return View(new ExtraMuralAgeGroups());
+            return View(mural);
+        }
+
+        private Dictionary<int, string> GetTeacherNameComboCollection()
+        {
+            var teacherCollection = new Dictionary<int, string>();
+
+            var collection = db.Staffs.ToList();
+
+            foreach (var entry in collection)
+            {
+                var displayName = $"{entry.Title}. {entry.Name} {entry.Surname}";
+                var hasAssignedClass = db.Classes.Any(x => x.AssignedTeacher.Equals(displayName));
+
+                if (entry.StaffPositionName != "Principle" && entry.StaffPositionName != "Vice Principle" && !hasAssignedClass)
+                {
+                    teacherCollection.Add(entry.StaffId, displayName);
+                }
+            }
+
+            return teacherCollection;
         }
 
         // POST: ExtraMuralAgeGroups1/Create
@@ -52,6 +80,11 @@ namespace DGSappSem2Final.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MuralAgeGroupId,ExtraMuralId,ExtraMuralName,AgeGroupName,NoAssignedStudents,StaffId,AssignedTeacher")] ExtraMuralAgeGroups extraMuralAgeGroups)
         {
+            Dictionary<int, string> teacherCollection = GetTeacherNameComboCollection();
+                        extraMuralAgeGroups.TeacherNameCollection = teacherCollection.Values.ToList();
+
+            var extra = db.ExtraMurals.Find(extraMuralAgeGroups.ExtraMuralId);
+            extraMuralAgeGroups.ExtraMuralName = extra.MuralName;
             if (ModelState.IsValid)
             {
                 db.ExtraMuralAgeGroups.Add(extraMuralAgeGroups);
@@ -72,6 +105,8 @@ namespace DGSappSem2Final.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ExtraMuralAgeGroups extraMuralAgeGroups = db.ExtraMuralAgeGroups.Find(id);
+            Dictionary<int, string> teacherCollection = GetTeacherNameComboCollection();
+            extraMuralAgeGroups.TeacherNameCollection = teacherCollection.Values.ToList();
             if (extraMuralAgeGroups == null)
             {
                 return HttpNotFound();
@@ -88,6 +123,9 @@ namespace DGSappSem2Final.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MuralAgeGroupId,ExtraMuralId,ExtraMuralName,AgeGroupName,NoAssignedStudents,StaffId,AssignedTeacher")] ExtraMuralAgeGroups extraMuralAgeGroups)
         {
+            Dictionary<int, string> teacherCollection = GetTeacherNameComboCollection();
+             extraMuralAgeGroups.TeacherNameCollection = teacherCollection.Values.ToList();
+
             if (ModelState.IsValid)
             {
                 db.Entry(extraMuralAgeGroups).State = EntityState.Modified;

@@ -138,6 +138,7 @@ Thank you
         {
             if (ModelState.IsValid)
             {
+                venueBooking.ClassName = db.Venues.Find(venueBooking.ClassId).venueName;
                 db.Entry(venueBooking).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

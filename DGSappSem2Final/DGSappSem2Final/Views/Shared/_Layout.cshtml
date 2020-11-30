@@ -80,6 +80,7 @@
                         <ul>@Html.ActionLink("Subjects", "Index", "Subjects")</ul>
                         <ul>@Html.ActionLink("Grade Subjects", "Index", "GradeSubjects")</ul>
                         <ul>@Html.ActionLink("Staff Subject Assignments", "Index", "StaffSubjects")</ul>
+                        <ul>@Html.ActionLink("Students", "Index", "Students")</ul>
                         <ul>@Html.ActionLink("Extra Murals", "Index", "ExtraMurals")</ul>
                         <ul>@Html.ActionLink("Extra Mural Teams", "Index", "ExtraMuralAgeGroups1")</ul>
                         <ul>@Html.ActionLink("Venues", "Index", "Venues")</ul>
@@ -91,14 +92,15 @@
                         <ul>@Html.ActionLink("Staff Attendance", "Index", "StaffAttendances")</ul>
                         <ul>@Html.ActionLink("Staff Timetables", "Index", "StaffTimetables")</ul>
                         <ul>@Html.ActionLink("Student Fees", "Index", "StudentFees")</ul>
-                        <ul>@Html.ActionLink("Assessments", "Index", "Assessments2")</ul>
+                        <ul>@Html.ActionLink("Assessments", "Index", "StaffAssessments")</ul>
                         <ul>@Html.ActionLink("Venue Bookings", "Index", "VenueBookings")</ul>
                     </div>
 
 
                     <button onclick="student()" class="dropbtn">Student Portal</button>
                     <div id="studentPortaldropdown" class="dropdown-content">
-                        <ul>@Html.ActionLink("Students", "Index", "Students")</ul>
+                        <ul>@Html.ActionLink("Assessments", "Index", "StudentAssessments")</ul>
+                        <ul>@Html.ActionLink("Extramural", "Index", "StudentMural")</ul>
                     </div>
 
 

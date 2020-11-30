@@ -11,7 +11,6 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>ExtraMuralAgeGroups</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
@@ -33,7 +32,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.AgeGroupName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.AgeGroupName, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.AgeGroupName, new SelectList(Enum.GetValues(typeof(DGSappSem2Final.Enums.AgeGroups))))
             @Html.ValidationMessageFor(model => model.AgeGroupName, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -46,13 +45,13 @@
             </div>
         </div>*@
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(model => model.StaffId, "StaffId", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("StaffId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.StaffId, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
 
     @*<div class="form-group">
         @Html.LabelFor(model => model.AssignedTeacher, htmlAttributes: new { @class = "control-label col-md-2" })

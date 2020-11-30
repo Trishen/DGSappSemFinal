@@ -316,7 +316,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Assessments2Controller.cs" />
     <Compile Include="Controllers\BookReservationsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
@@ -327,11 +326,13 @@
     <Compile Include="Controllers\GradeSubjectsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StaffAssessmentsController.cs" />
     <Compile Include="Controllers\StaffAttendancesController.cs" />
     <Compile Include="Controllers\StaffPositionsController.cs" />
     <Compile Include="Controllers\StaffsController.cs" />
     <Compile Include="Controllers\StaffSubjectsController.cs" />
     <Compile Include="Controllers\StaffTimetablesController.cs" />
+    <Compile Include="Controllers\StudentAssessmentsController.cs" />
     <Compile Include="Controllers\StudentFeesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
@@ -353,7 +354,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Assements\Exam.cs" />
-    <Compile Include="Models\Assements\Assessment.cs" />
+    <Compile Include="Models\Assements\StudentAssessment.cs" />
+    <Compile Include="Models\Assements\StaffAssessment.cs" />
     <Compile Include="Models\Classes\Classes.cs" />
     <Compile Include="Models\Classes\ClassSessions.cs" />
     <Compile Include="Models\Events\VenueBooking.cs" />
@@ -392,6 +394,7 @@
     <Compile Include="Validators\CustomGradeSubjectValidator.cs" />
     <Compile Include="Validators\CustomExtraMuralNameValidator.cs" />
     <Compile Include="Validators\CustomDateValidator.cs" />
+    <Compile Include="Validators\CustomAssessmentNameValidator.cs" />
     <Compile Include="Validators\CustomTermNameValidator.cs" />
     <Compile Include="Validators\CustomSubjectNameValidator.cs" />
     <Compile Include="Validators\CustomGradeNameValidator.cs" />
@@ -556,13 +559,17 @@
     <Content Include="Views\ExtraMuralAgeGroups1\Details.cshtml" />
     <Content Include="Views\ExtraMuralAgeGroups1\Edit.cshtml" />
     <Content Include="Views\ExtraMuralAgeGroups1\Index.cshtml" />
-    <Content Include="Views\Assessments2\Create.cshtml" />
-    <Content Include="Views\Assessments2\Delete.cshtml" />
-    <Content Include="Views\Assessments2\Details.cshtml" />
-    <Content Include="Views\Assessments2\Edit.cshtml" />
-    <Content Include="Views\Assessments2\Index.cshtml" />
-    <Content Include="Views\Assessments2\Download.cshtml" />
     <Content Include="Views\StudentFees\SMSReminder.cshtml" />
+    <Content Include="Views\StaffAssessments\Create.cshtml" />
+    <Content Include="Views\StaffAssessments\Delete.cshtml" />
+    <Content Include="Views\StaffAssessments\Details.cshtml" />
+    <Content Include="Views\StaffAssessments\Edit.cshtml" />
+    <Content Include="Views\StaffAssessments\Index.cshtml" />
+    <Content Include="Views\StudentAssessments\Create.cshtml" />
+    <Content Include="Views\StudentAssessments\Download.cshtml" />
+    <Content Include="Views\StudentAssessments\Details.cshtml" />
+    <Content Include="Views\StudentAssessments\Edit.cshtml" />
+    <Content Include="Views\StudentAssessments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

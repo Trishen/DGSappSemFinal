@@ -26,7 +26,7 @@ namespace DGSappSem2Final.Models.Murals
 
         [Required]
         [DisplayName("Age Group Name")]
-        public Enums.AgeGroups AgeGroupName { get; set; }
+        public string AgeGroupName { get; set; }
 
         [DisplayName("No. Assigned Students")]
         public int NoAssignedStudents { get; set; }

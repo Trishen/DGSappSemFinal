@@ -7,16 +7,10 @@
 <h2>Extramural Teams </h2>
 
 <p>
-    @Html.ActionLink("Add A New Extramural Teams ", "Create")
+    @Html.ActionLink("Add A New Extramural Team", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ExtraMural.MuralName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Staff.Title)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.ExtraMuralName)
         </th>
@@ -34,12 +28,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExtraMural.MuralName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Staff.Title)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.ExtraMuralName)
         </td>

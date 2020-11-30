@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE html>
-
+<h2>Venue Bookings</h2>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -85,7 +85,7 @@
             </td>
             <td>
                 @Html.ActionLink("Reschedule", "Edit", new { id=item.BookEventId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.BookEventId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.BookEventId }) 
                 @*@Html.ActionLink("Delete", "Delete", new { id=item.BookEventId })*@
             </td>
         </tr>

@@ -9,50 +9,51 @@ using System.Web;
 using System.Web.Mvc;
 using DGSappSem2Final.Models;
 using DGSappSem2Final.Models.Assements;
-using Microsoft.WindowsAPICodePack.Shell;
 
 namespace DGSappSem2Final.Controllers
 {
-    public class Assessments2Controller : Controller
+    public class StaffAssessmentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Assessments2
+        // GET: StaffAssessments
         public ActionResult Index()
         {
-            return View(db.Assessments.ToList());
+            var assessments = db.Assessments.Include(s => s.Grade);
+            return View(assessments.ToList());
         }
 
-        // GET: Assessments2/Details/5
+        // GET: StaffAssessments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assessment assessment = db.Assessments.Find(id);
-            if (assessment == null)
+            StaffAssessment staffAssessment = db.Assessments.Find(id);
+            if (staffAssessment == null)
             {
                 return HttpNotFound();
             }
-            return View(assessment);
+            return View(staffAssessment);
         }
 
-        // GET: Assessments2/Create
+        // GET: StaffAssessments/Create
         public ActionResult Create()
         {
-            return View(new Assessment());
+            ViewBag.GradeId = new SelectList(db.Grades, "GradeId", "GradeName");
+            return View(new StaffAssessment());
         }
 
-        // POST: Assessments2/Create
+        // POST: StaffAssessments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AssessmentID,AssessmentName")] Assessment assessment, HttpPostedFileBase files)
+        public ActionResult Create([Bind(Include = "AssessmentID,AssessmentName,GradeId,GradeName,FileName,FileType,File,DownloadPath")] StaffAssessment staffAssessment, HttpPostedFileBase files)
         {
-            assessment.FileName = files.FileName;
-            assessment.FileType = files.ContentType;
+            staffAssessment.FileName = files.FileName;
+            staffAssessment.FileType = files.ContentType;
 
             using (Stream inputStream = files.InputStream)
             {
@@ -62,71 +63,73 @@ namespace DGSappSem2Final.Controllers
                     memoryStream = new MemoryStream();
                     inputStream.CopyTo(memoryStream);
                 }
-                assessment.File = memoryStream.ToArray();
+                staffAssessment.File = memoryStream.ToArray();
             }
 
             if (ModelState.IsValid)
             {
-                db.Assessments.Add(assessment);
+                db.Assessments.Add(staffAssessment);
                 db.SaveChanges();
             }
 
             return RedirectToAction("Index");
         }
 
-        // GET: Assessments2/Edit/5
+        // GET: StaffAssessments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assessment assessment = db.Assessments.Find(id);
-            if (assessment == null)
+            StaffAssessment staffAssessment = db.Assessments.Find(id);
+            if (staffAssessment == null)
             {
                 return HttpNotFound();
             }
-            return View(assessment);
+            ViewBag.GradeId = new SelectList(db.Grades, "GradeId", "GradeName", staffAssessment.GradeId);
+            return View(staffAssessment);
         }
 
-        // POST: Assessments2/Edit/5
+        // POST: StaffAssessments/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AssessmentID,AssessmentName")] Assessment assessment, HttpPostedFileBase files)
+        public ActionResult Edit([Bind(Include = "AssessmentID,AssessmentName,GradeId,GradeName,FileName,FileType,File,DownloadPath")] StaffAssessment staffAssessment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(assessment).State = EntityState.Modified;
+                db.Entry(staffAssessment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(assessment);
+            ViewBag.GradeId = new SelectList(db.Grades, "GradeId", "GradeName", staffAssessment.GradeId);
+            return View(staffAssessment);
         }
 
-        // GET: Assessments2/Delete/5
+        // GET: StaffAssessments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assessment assessment = db.Assessments.Find(id);
-            if (assessment == null)
+            StaffAssessment staffAssessment = db.Assessments.Find(id);
+            if (staffAssessment == null)
             {
                 return HttpNotFound();
             }
-            return View(assessment);
+            return View(staffAssessment);
         }
 
-        // POST: Assessments2/Delete/5
+        // POST: StaffAssessments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Assessment assessment = db.Assessments.Find(id);
-            db.Assessments.Remove(assessment);
+            StaffAssessment staffAssessment = db.Assessments.Find(id);
+            db.Assessments.Remove(staffAssessment);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -138,37 +141,6 @@ namespace DGSappSem2Final.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public ActionResult Download(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assessment assessment = db.Assessments.Find(id);
-            if (assessment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assessment);
-        }
-
-        [HttpPost]
-        public ActionResult Download(int id)
-        {
-            Assessment assessment = db.Assessments.Find(id);
-            string downloadsPath = KnownFolders.Downloads.Path;
-
-            //using (Stream file = System.IO.File.OpenWrite($@"{downloadsPath}\{assessment.FileName}"))
-            //{
-            //    file.Write(assessment.File, 0, assessment.File.Length);
-            //}
-
-            //assessment.DownloadPath = downloadsPath;
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
         }
     }
 }

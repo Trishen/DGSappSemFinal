@@ -1,27 +1,18 @@
-﻿@model DGSappSem2Final.Models.Assements.Assessment
-
-@{
-    ViewBag.Title = "Delete";
-}
-
+﻿@model DGSappSem2Final.Models.Assements.StudentAssessment
 <h2>Download Assessment</h2>
 
-<h3>Are you sure you want to download this ?</h3>
 <div>
-    <h4>Assessment</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AssessmentName)
+            @Html.DisplayNameFor(model => model.StaffAssessment.AssessmentName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AssessmentName)
+            @Html.DisplayFor(model => model.StaffAssessment.AssessmentName)
         </dd>
 
     </dl>
-
-    <input type="file" name="files" />
 
     @using (Html.BeginForm())
     {

@@ -13,59 +13,61 @@
         <h4>VenueBooking</h4>
         <hr />
         <dl class="dl-horizontal">
-    
+            <dt>
+                @Html.DisplayNameFor(model => model.VenueName)
+            </dt>
             <dd>
                 @Html.DisplayFor(model => model.VenueName)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.ClassName)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.ClassName)
             </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.GradeName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.GradeName)
-            </dd>
-        
+
+            @*<dt>
+            @Html.DisplayNameFor(model => model.GradeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeName)
+        </dd>*@
+
             <dt>
                 @Html.DisplayNameFor(model => model.DateBookinFor)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.DateBookinFor)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.StartTime)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.StartTime)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.EndTime)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.EndTime)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.BookingReason)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.BookingReason)
             </dd>
-    
+
         </dl>
     </div>
     <p>

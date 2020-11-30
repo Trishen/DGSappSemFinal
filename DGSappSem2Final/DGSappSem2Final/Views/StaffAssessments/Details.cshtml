@@ -1,0 +1,67 @@
+﻿@model DGSappSem2Final.Models.Assements.StaffAssessment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details For Assessment</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade.GradeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grade.GradeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssessmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssessmentName)
+        </dd>
+
+ 
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileName)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.FileType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.File)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.File)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DownloadPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DownloadPath)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+
+    @Html.ActionLink("Back to List", "Index")
+</p>

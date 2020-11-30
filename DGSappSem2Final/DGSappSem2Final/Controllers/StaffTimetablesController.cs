@@ -70,13 +70,46 @@ namespace DGSappSem2Final.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StaffTimetableId")] StaffTimetable staffTimetable)
-        {
-            if (ModelState.IsValid)
-            {
-                db.StaffTimetables.Add(staffTimetable);
+        {      
+                var reg = db.Classes.ToList();
+                var assignedReg = reg.Where(x => x.AssignedTeacher == staffTimetable.AssignedTeacher).ToList();
+
+                var staffSubs = db.StaffSubjects.ToList();
+                var assignedSubs = staffSubs.Where(x => x.AssignedTeacher == staffTimetable.AssignedTeacher).ToList();
+
+                if (assignedSubs.Count > 0 || assignedReg.Count == 1)
+                {
+                    staffTimetable.HasAssignedClasses = true;
+                }
+                else
+                {
+                    staffTimetable.HasAssignedClasses = false;
+                }
+
+                if (assignedReg.Count == 1)
+                {
+                    staffTimetable.Registration = assignedReg.FirstOrDefault().ClassName;
+                }
+
+                if (assignedSubs.Count > 0)
+                {
+                    staffTimetable.TimeTableLayout = GetTimeTableLayout(assignedSubs);
+
+                    staffTimetable.Monday = staffTimetable.TimeTableLayout[0];
+                    staffTimetable.Tuesday = staffTimetable.TimeTableLayout[1];
+                    staffTimetable.Wednesday = staffTimetable.TimeTableLayout[2];
+                    staffTimetable.Thursday = staffTimetable.TimeTableLayout[3];
+                    staffTimetable.Friday = staffTimetable.TimeTableLayout[4];
+                }
+
+                if (staffTimetable == null)
+                {
+                    return HttpNotFound();
+                }
+
+                staffTimetable.TimeTableAssigned = true;
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            
 
             return View(staffTimetable);
         }

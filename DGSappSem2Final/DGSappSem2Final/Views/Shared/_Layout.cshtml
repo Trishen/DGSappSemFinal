@@ -71,34 +71,34 @@
 
                     <button onclick="admin()" class="dropbtn">Admin Portal</button>
                     <div id="adminPortaldropdown" class="dropdown-content">
-                        <ul>@Html.ActionLink("Staff Positions", "Index", "StaffPositions")</ul>
-                        <ul>@Html.ActionLink("Staff Members", "Index", "Staffs")</ul>
                         <ul>@Html.ActionLink("Terms", "Index", "Terms")</ul>
                         <ul>@Html.ActionLink("Grades", "Index", "Grades")</ul>
                         <ul>@Html.ActionLink("Grade Fees", "Index", "Fees")</ul>
-                        <ul>@Html.ActionLink("Registration Classes", "Index", "Classes")</ul>
                         <ul>@Html.ActionLink("Subjects", "Index", "Subjects")</ul>
                         <ul>@Html.ActionLink("Grade Subjects", "Index", "GradeSubjects")</ul>
-                        <ul>@Html.ActionLink("Staff Subject Assignments", "Index", "StaffSubjects")</ul>
-                        <ul>@Html.ActionLink("Students", "Index", "Students")</ul>
                         <ul>@Html.ActionLink("Extra Murals", "Index", "ExtraMurals")</ul>
                         <ul>@Html.ActionLink("Extra Mural Teams", "Index", "ExtraMuralAgeGroups1")</ul>
                         <ul>@Html.ActionLink("Venues", "Index", "Venues")</ul>
+                        <ul>@Html.ActionLink("Venue Bookings", "Index", "VenueBookings")</ul>
                     </div>
 
 
                     <button onclick="staff()" class="dropbtn">Staff Portal</button>
                     <div id="staffPortaldropdown" class="dropdown-content">
+                        <ul>@Html.ActionLink("Staff Positions", "Index", "StaffPositions")</ul>
+                        <ul>@Html.ActionLink("Staff Members", "Index", "Staffs")</ul>
+                        <ul>@Html.ActionLink("Registration Classes", "Index", "Classes")</ul>
+                        <ul>@Html.ActionLink("Staff Subject Assignments", "Index", "StaffSubjects")</ul>
                         <ul>@Html.ActionLink("Staff Attendance", "Index", "StaffAttendances")</ul>
                         <ul>@Html.ActionLink("Staff Timetables", "Index", "StaffTimetables")</ul>
                         <ul>@Html.ActionLink("Student Fees", "Index", "StudentFees")</ul>
-                        <ul>@Html.ActionLink("Assessments", "Index", "StaffAssessments")</ul>
-                        <ul>@Html.ActionLink("Venue Bookings", "Index", "VenueBookings")</ul>
+                        <ul>@Html.ActionLink("Upload Assessments", "Index", "StaffAssessments")</ul>
                     </div>
 
 
                     <button onclick="student()" class="dropbtn">Student Portal</button>
                     <div id="studentPortaldropdown" class="dropdown-content">
+                        <ul>@Html.ActionLink("Students", "Index", "Students")</ul>
                         <ul>@Html.ActionLink("Assessments", "Index", "StudentAssessments")</ul>
                         <ul>@Html.ActionLink("Extramural", "Index", "StudentExtraMurals")</ul>
                     </div>

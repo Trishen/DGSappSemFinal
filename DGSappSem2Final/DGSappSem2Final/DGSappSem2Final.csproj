@@ -392,6 +392,7 @@
     <Compile Include="Models\Terms\Term.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validators\CustomStaffAttendanceNameValidator.cs" />
     <Compile Include="Validators\CustomGradeSubjectValidator.cs" />
     <Compile Include="Validators\CustomExtraMuralNameValidator.cs" />
     <Compile Include="Validators\CustomDateValidator.cs" />

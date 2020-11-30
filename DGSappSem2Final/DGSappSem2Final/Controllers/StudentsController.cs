@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using DGSappSem2Final.Models;
@@ -87,14 +88,41 @@ namespace DGSappSem2Final.Controllers
             {
                 db.Students.Add(student);
                 db.SaveChanges();
+
+
+                var message = $@"Dear {student.StudentName},
+
+Thank you for joining the DGHS Team.
+
+This is an automated message genarated by DGHS.
+
+Thank you
+";
+                SendEmailReminders(student.StudentEmail, message);
+
                 return RedirectToAction("Index");
             }
 
             ViewBag.ClassId = new SelectList(db.Classes, "ClassId", "ClassName", student.ClassId);
             ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title", student.StaffId);
+
+
             return View(student);
         }
 
+        public void SendEmailReminders(string email, string message)
+        {
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("dgstest2020@gmail.com", "Dgs2020!"),
+                EnableSsl = true,
+            };
+
+            var subject = "Welcome!";
+
+            smtpClient.Send("dgstest2020@gmail.com", recipients: email, subject: subject, body: message);
+        }
         // GET: Students/Edit/5
         public ActionResult Edit(int? id)
         {

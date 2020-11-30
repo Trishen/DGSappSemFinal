@@ -18,6 +18,9 @@ namespace DGSappSem2Final.Models.Murals
 
         public int? StudentId { get; set; }
 
+        public string StudentName { get; set; }
+        public string MuralMappedName { get; set; }
+
         [ForeignKey("MuralAgeGroupId")]
         public virtual ExtraMuralAgeGroups ExtraMuralAgeGroup { get; set; }
 
@@ -27,5 +30,8 @@ namespace DGSappSem2Final.Models.Murals
         public virtual ExtraMural ExtraMural { get; set; }
 
         public int? MuralId { get; set; }
+
+        public IEnumerable<string> StudentNameCollection { get; set; }
+        public IEnumerable<string> TeamMapCollection { get; set; }
     }
 }

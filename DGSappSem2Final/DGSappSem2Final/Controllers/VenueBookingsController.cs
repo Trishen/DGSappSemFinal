@@ -76,7 +76,7 @@ namespace DGSappSem2Final.Controllers
 Please note the { venue.venueName} has been booked for the { venueBooking.DateBookinFor.Date.ToString("dd-MM-yyyy")}. During { venueBooking.StartTime.TimeOfDay} and { venueBooking.EndTime.TimeOfDay}.
 For {venueBooking.BookingReason}.
 
-This is an automated message genarated by DGS.
+This is an automated message genarated by DGHS.
 
 Thank you
 ";

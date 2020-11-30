@@ -4,28 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details of Extramural</h2>
+<h2>Details Fpr Extramural</h2>
 
 <div>
-    <h4>ExtraMuralAgeGroups</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ExtraMural.MuralName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ExtraMural.MuralName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Staff.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Staff.Title)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ExtraMuralName)
         </dt>
@@ -61,6 +44,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MuralAgeGroupId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DGSappSem2Final.Models;
 using DGSappSem2Final.Models.Murals;
+using DGSappSem2Final.Models.Student;
 
 namespace DGSappSem2Final.Controllers
 {
@@ -40,12 +41,49 @@ namespace DGSappSem2Final.Controllers
         // GET: StudentExtraMurals/Create
         public ActionResult Create()
         {
+            var students = db.Students.ToList();
+            var teams = db.ExtraMuralAgeGroups.ToList();
+
+            var bookrev = new StudentExtraMural
+            {
+                StudentNameCollection = GetStudentNames(students),
+                TeamMapCollection = GetExtramurals(teams)
+            };
+
+
             ViewBag.MuralId = new SelectList(db.ExtraMurals, "MuralId", "MuralName");
             ViewBag.MuralAgeGroupId = new SelectList(db.ExtraMuralAgeGroups, "MuralAgeGroupId", "ExtraMuralName");
             ViewBag.StudentId = new SelectList(db.Students, "StID", "StudentName");
-            return View();
+            return View(bookrev);
         }
 
+        private List<string> GetExtramurals(List<ExtraMuralAgeGroups> mural)
+        {
+            var list = new List<string>();
+
+            foreach (var st in mural)
+            {
+                var displayName = st.ExtraMuralName + " (" + st.AgeGroupName + ")";
+
+                list.Add(displayName);
+            }
+
+            return list;
+        }
+
+        private List<string> GetStudentNames(List<Student> students)
+        {
+            var list = new List<string>();
+
+            foreach (var st in students)
+            {
+                var displayName = st.StudentName + " " + st.StudentSurname + " (" + st.ClassName + ")";
+
+                list.Add(displayName);
+            }
+
+            return list;
+        }
         // POST: StudentExtraMurals/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

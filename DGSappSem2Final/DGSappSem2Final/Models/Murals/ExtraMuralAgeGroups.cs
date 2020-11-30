@@ -21,7 +21,6 @@ namespace DGSappSem2Final.Models.Murals
         public int? ExtraMuralId { get; set; }
 
         [Display(Name = "Extra Mural Name")]
-        [Required]
         public string ExtraMuralName { get; set; }
 
         [Required]
@@ -31,10 +30,10 @@ namespace DGSappSem2Final.Models.Murals
         [DisplayName("No. Assigned Students")]
         public int NoAssignedStudents { get; set; }
 
-        [ForeignKey("StaffId")]
-        public virtual Staff.Staff Staff { get; set; }
+        //[ForeignKey("StaffId")]
+        //public virtual Staff.Staff Staff { get; set; }
 
-        public int? StaffId { get; set; }
+        //public int? StaffId { get; set; }
 
         [Display(Name = "Assigned Teacher")]
         public string AssignedTeacher { get; set; }

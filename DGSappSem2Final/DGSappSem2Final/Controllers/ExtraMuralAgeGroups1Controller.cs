@@ -18,7 +18,7 @@ namespace DGSappSem2Final.Controllers
         // GET: ExtraMuralAgeGroups1
         public ActionResult Index()
         {
-            var extraMuralAgeGroups = db.ExtraMuralAgeGroups.Include(e => e.ExtraMural).Include(e => e.Staff);
+            var extraMuralAgeGroups = db.ExtraMuralAgeGroups.Include(e => e.ExtraMural);
             return View(extraMuralAgeGroups.ToList());
         }
 
@@ -93,7 +93,7 @@ namespace DGSappSem2Final.Controllers
             }
 
             ViewBag.ExtraMuralId = new SelectList(db.ExtraMurals, "MuralId", "MuralName", extraMuralAgeGroups.ExtraMuralId);
-            ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title", extraMuralAgeGroups.StaffId);
+            //ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title", extraMuralAgeGroups.StaffId);
             return View(extraMuralAgeGroups);
         }
 
@@ -112,7 +112,7 @@ namespace DGSappSem2Final.Controllers
                 return HttpNotFound();
             }
             ViewBag.ExtraMuralId = new SelectList(db.ExtraMurals, "MuralId", "MuralName", extraMuralAgeGroups.ExtraMuralId);
-            ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title", extraMuralAgeGroups.StaffId);
+            //ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title", extraMuralAgeGroups.StaffId);
             return View(extraMuralAgeGroups);
         }
 
@@ -133,7 +133,7 @@ namespace DGSappSem2Final.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ExtraMuralId = new SelectList(db.ExtraMurals, "MuralId", "MuralName", extraMuralAgeGroups.ExtraMuralId);
-            ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title", extraMuralAgeGroups.StaffId);
+            //ViewBag.StaffId = new SelectList(db.Staffs, "StaffId", "Title", extraMuralAgeGroups.StaffId);
             return View(extraMuralAgeGroups);
         }
 

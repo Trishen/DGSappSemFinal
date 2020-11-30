@@ -93,7 +93,7 @@ namespace DGSappSem2Final.Controllers
             });
             var results = client.SMS.Send(request: new SMS.SMSRequest
             {
-                from = "DGS",
+                from = "DGHS",
                 to = "27817375820",
                 //update to include book information 
 

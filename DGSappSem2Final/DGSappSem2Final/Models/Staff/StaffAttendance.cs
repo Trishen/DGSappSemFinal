@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DGSappSem2Final.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace DGSappSem2Final.Models.Staff
         [Key]
         public int StaffAttendanceId { get; set; }
 
-        [Required]
         [Display(Name = "Name")]
+        //[CustomStaffAttendanceNameValidator]
         public string StaffAttName { get; set; }
 
         [Required]

@@ -15,10 +15,7 @@
             @Html.DisplayNameFor(model => model.StudentName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExtraMural)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExtraMuralAgeGroup)
+            @Html.DisplayNameFor(model => model.MuralMappedName)
         </th>
         <th></th>
     </tr>
@@ -30,13 +27,9 @@
                 @Html.DisplayFor(modelItem => item.StudentName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ExtraMural)
+                @Html.DisplayFor(modelItem => item.MuralMappedName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ExtraMuralAgeGroup)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.StudentMuralId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.StudentMuralId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.StudentMuralId })
             </td>

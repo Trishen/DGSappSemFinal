@@ -16,7 +16,12 @@
         font-size: 14px;
         border: none;
     }
-
+    .bton {
+        background-color: #272b28;
+        color: white;
+        padding: 14px;
+        font-size: 14px;
+    }
     .dropdown {
         position: relative;
         display: inline-block;
@@ -111,13 +116,14 @@
                         <!--<ul>-->@*@Html.ActionLink("Book Return", "CheckIn", "BookReservations")*@<!--</ul>-->
                     </div>
 
-                    @Html.ActionLink("About", "About", "Home", new { @class = "dropbtn" })
+                    @*@Html.ActionLink("About", "Vhttps://dgsappsem2final2020.azurewebsites.net/Home/About?Length=4", "Home", new { @class = "bton" });*@
+                    <a href="https://dgsappsem2final2020.azurewebsites.net/Home/About" class="bton">About</a>
+                    <a href="https://dgsappsem2final2020.azurewebsites.net/Home/Contact" class="bton">Contact</a>
 
-                   
-               @Html.ActionLink("Contact", "Contact", "Home", new { @class = "dropbtn" })
-    
+                        @*@Html.ActionLink("Contact", "Contact", "Home", new { @class = "bton" })*@
 
-                    @Html.Partial("_LoginPartial")
+
+                        @Html.Partial("_LoginPartial")
                 </div></div>
             </div>
     </div>

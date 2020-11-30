@@ -89,7 +89,7 @@ namespace DGSappSem2Final.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentMuralId,StudentId,MuralAgeGroupId,MuralId")] StudentExtraMural studentExtraMural)
+        public ActionResult Create([Bind(Include = "StudentMuralId,StudentId,MuralAgeGroupId,MuralId,StudentName,MuralMappedName")] StudentExtraMural studentExtraMural)
         {
             if (ModelState.IsValid)
             {

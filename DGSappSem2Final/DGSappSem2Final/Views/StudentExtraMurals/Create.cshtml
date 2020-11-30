@@ -22,10 +22,10 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.StudentName, "Team", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.MuralMappedName, "Team", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.StudentName, new SelectList(Model.TeamMapCollection, "- Please select team -"))
-            @Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(m => m.MuralMappedName, new SelectList(Model.TeamMapCollection, "- Please select team -"))
+            @Html.ValidationMessageFor(model => model.MuralMappedName, "", new { @class = "text-danger" })
         </div>
     </div>
     @*<div class="form-group">
